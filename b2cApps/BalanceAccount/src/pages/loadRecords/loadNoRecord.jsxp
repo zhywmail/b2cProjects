@@ -1,0 +1,37 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script type="text/javascript" src="/resources/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="@{js/balanceList.js}@"></script>
+<table class="table table-bordered table-over" style="word-break:keep-all">
+
+    <thead>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th colspan="7" style="text-align: center">万家电商对账</th>
+        <th colspan="4" style="text-align: center">第三方支付账单</th>
+        <th rowspan="2">差异</th>
+    </tr>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th width="144px">支付单号</th>
+        <th width="144px">订单单号</th>
+        <th width="160px">支付时间</th>
+        <th width="160px">支付方式</th>
+        <th width="220px">应收金额</th>
+        <th width="220px">应付手续费</th>
+        <th width="220px">到账金额</th>
+        <th width="220px">支付单号</th>
+        <th width="220px">划账日期</th>
+        <th width="220px">应付万家</th>
+        <th width="220px">留存的手续费</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="parent">
+        <td colspan="12" style="text-align: center">暂无差异明细数据</td>
+    </tr>
+    </tbody>
+
+</table>
+<div class="pagination_params" totalPages="{{=it.pageParams.totalPages}}"
+     currentPage="{{=it.pageParams.currentPage}}" totalRecords="{{=it.pageParams.totalRecords}}"
+     displayNum="{{=it.pageParams.displayNum}}" pageLimit="{{=it.pageParams.pageLimit}}"
+     recordType="{{=it.pageParams.recordType}}">
+</div>

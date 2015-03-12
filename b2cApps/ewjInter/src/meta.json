@@ -1,0 +1,21 @@
+{
+    "context":"ewjInter",
+    "appEditor":{"enabled":true},
+    "renderEngine":"artTemplate",
+    "pages" : [
+        {"url":"/ewjInter.jsp","name":"万家国际","pageId":"ewjInter","template":"pages/ewjInter.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"}
+    ],
+    "templates" : [
+        {"template":"pages/ewjInter.html","name":"万家国际","description":"页面","dataProcessor":"@pages/index_process.jsx"}
+    ],
+    "rules":[{
+        "id":"fullControl",
+        "name":"完全控制",
+        "pattern":".*"
+    },{
+        "id":"readOnly",
+        "name":"查看权限",
+        "pattern":"(pages/viewAppPrivilege/.*)|(pages/viewUserPrivilege/.*)|(pages/home.jsx)"
+    }]
+
+}

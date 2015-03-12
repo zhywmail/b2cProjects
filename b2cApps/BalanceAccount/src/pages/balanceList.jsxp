@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/resources/bootstrap300/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/resources/jquery-1.7.2.min.js"></script>
+    <script src="/resources/bootstrap300/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="../js/IsoneAjaxPagination-1.10.min.js"></script>
+    <script type="text/javascript" src="/resources/layer/layer.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:20px">
+    <div>
+        <div style="margin-right: 60px;float: left">
+            <span class="glyphicon glyphicon-home" style="font-size: 18px"></span>
+            <span class="titleSpan" style="font-size: 15px">对账管理</span>
+        </div>
+        <div style="width: 480px;float: left">
+            <span class="glyphicon glyphicon-calendar" style="float: left;font-size: 25px;margin-right: 5px"></span>
+            <div class="input-append date form_datetime" style="float: left;margin-right: 15px;font-size: 25px">
+                <input id="datetime" size="16" class="form-control" type="text" value="" style="width: 100px">
+            </div>
+            <span class="glyphicon glyphicon-credit-card"  style="float: left;margin:1px 3px 0 0;font-size: 25px"></span>
+            <div class="btn-group" style="margin-right: 15px;font-size: 25px;float: left">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span id="bankNameEN" style="display: none">Crbank</span>
+                    <span id="bankNameCN" style="margin-right:10px">华润e付</span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a id="Crbank" href="#">华润e付</a></li>
+                    <li><a id="WecPay" href="#" style="display: none">微信支付</a></li>
+                    <li><a id="CNUPay" href="#">银联</a></li>
+                    <li><a id="Alipay" href="#" style="display: none">支付宝</a></li>
+                    <li><a id="Tenpay" href="#" style="display: none">财付通</a></li>
+                </ul>
+            </div>
+            <button id="checkButton" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-search" style="font-size: 15px;float: left"></span> 查看日报表
+            </button>
+        </div>
+        <button id="diffList" class="btn btn-default btn-sm" type="button" style="font-size: 15px">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>  只看差异   <span id="badge" class="badge">{{=it.diffList}} 项</span>
+        </button>
+        <button id="allCheckButton" type="button" class="btn btn-default">
+            查看全部报表
+        </button>
+
+        <hr class="titleHr">
+
+        <ul class="nav nav-tabs" role="tablist" style="font-size: 15px">
+            <li id="differenceTable" role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> 在线支付对账明细表</a></li>
+            <li id="bankRecordsTable" role="presentation" style="display: none"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> 银行机构支付记录表</a></li>
+            <li id="B2cRecordsTable" role="presentation" style="display: none"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> 商城支付记录表</a></li>
+        </ul>
+
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <span class="glyphicon glyphicon-cog"></span>  对账设置
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <button id="modifyScore" type="button" class="btn btn-primary" style="margin : 10px 0px 10px 0px">提交更改</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <div id="export_data" class="modal fade" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
+                    <h3><span class="glyphicon glyphicon-list-alt"></span> 生成对账差异明细Excel报表</h3>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a id="exportExcel" href="#export_tab" data-toggle="tab">生成Excel报表</a></li>
+                        <li><a id="excelListHistory" href="#export_history" data-toggle="tab">生成报表记录</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="export_tab">
+                            <form class="form-horizontal form-inline">
+                                <div class="form-group" style="margin-top:10px">
+                                    <label class="control-label col-md-5" for="export_fileName" style="float: left;">报表文件命名：</label>
+                                    <div class="col-md-7">
+                                        <input type="hidden" id="mId" name="m" value="{{=it.merchantId}}"/>
+                                        <input type="text" class="form-control" id="export_fileName" name="export_fileName">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" class="btn btn-default" data-dismiss="modal">取消</a>
+                                    <button type="button" class="btn btn-primary" id="upload_file_smt" data-loading-text="处理中...">确定</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="export_history">
+                            <div id="excelListHistoryDiv" style="height: 350px;overflow: hidden;overflow-y: auto;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div>
+        <!--异步加载数据列表部分-->
+        <div class="row-fluid">
+            <div id="record_list" class="record_list span12">
+            </div>
+        </div>
+        <div style="float:left;margin-top:10px;">
+            <button type="button" class="btn btn-success" data-target="#export_data" data-toggle="modal" id="exportButton">导出Excel表格</button>
+        </div>
+        <!--分页部分-->
+        <div class="row-fluid">
+            <div style="margin-top: 5px;padding-top: 10px; border-top: 1px solid #DDDDDD;text-align: right;">
+                <div class="pagination" style="margin: 0; ">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../js/balanceList.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/resources/bootstrap300/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style/app.css" rel="stylesheet">
+    <script src="/resources/bootstrap300/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:20px">
+    <div>
+        <span class="glyphicon glyphicon-home"></span>
+        <span class="titleSpan" style="padding-right: 30px;">ESB对接管理中心</span>
+        <hr class="titleHr">
+    </div>
+    <div class="well">
+        <a class="btn btn-primary" href="logList.jsx?m={{=it.merchantId}}&type=esb_product&logTypeName=商品对接日志">商品对接日志</a>
+        <a class="btn btn-primary" href="logList.jsx?m={{=it.merchantId}}&type=esb_order&logTypeName=订单对接日志">订单对接日志</a>
+        <a class="btn btn-primary" href="logList.jsx?m={{=it.merchantId}}&type=esb_afterOrder&logTypeName=售后退货单对接日志">售后退货单对接日志</a>
+        <a class="btn btn-primary" href="logList.jsx?m={{=it.merchantId}}&type=esb_refundOrder&logTypeName=售后退款单对接日志">售后退款单对接日志</a>
+        <a class="btn btn-primary" href="logList.jsx?m={{=it.merchantId}}&type=esb_address&logTypeName=地址对接日志">地址对接日志</a>
+        <a class="btn btn-primary" href="logList.jsx?m={{=it.merchantId}}&type=esb_memberCard&logTypeName=会员卡对接日志">会员卡对接日志</a>
+    </div>
+</div>
+
+</body>
+</html>

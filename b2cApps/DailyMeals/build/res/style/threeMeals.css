@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* 轮换广告*/
+.slide_banner{ width:100%; height:370px; min-width:1190px;}
+.slide_wrap{ height:370px; _overflow:hidden;}
+.slide_adv li{ width:100%; height:370px; display:block;  background-repeat: no-repeat; background-position: center top;}
+.slide_main{ height:370px; position:relative;}
+.slide_link{ width:710px; height:370px; position:absolute; left:220px; top:0;}
+.slide_box{ width:1190px; margin:auto; position:relative;  z-index:99;}
+.slide_box .num{  height:22px; position:absolute; right:270px; bottom:10px;}
+.slide_box .num li{ float:left; display:block; background:#b5b4b4; color:#fff; width:20px; height:20px; border-radius: 50%; margin-right:6px; font:12px/20px arial; text-align:center; cursor:pointer; }
+.slide_box .num li.cur{ background:#b90b0c;}
+/*end 轮换广告*/
+
+.fr_commend{ position:absolute; right:0px; top:-360px; width:260px; height:350px;  background:#fff;}
+
+/* 左边分类*/
+.slide_cate{ position:absolute; left:0; top:-370px; width:218px; height:368px; background:#fff; border:#c5202d 2px solid; border-top:0;}
+.slide_cate .s_item,.sort .itemCur{ padding:0px 0 0 0px; border-bottom:#efefef 1px solid; cursor:pointer;}
+.slide_cate .s_item.last{ border:0;}
+.slide_cate .s_item h3{  padding:9px 0 8px 18px; color:#333;  font:bold 14px microsoft yahei; position:relative;}
+.slide_cate .s_item h3 a{ color:#333;}
+.slide_cate .s_item h3 a:hover{ text-decoration:none;}
+.slide_cate .s_item .col{ margin:0 0 0 18px; width:180px; padding:0 0 5px; overflow:hidden;}
+.slide_cate .s_item .col a{ float:left; display:inline-block; margin:0 10px 4px 0; font:12px microsoft yahei; color:#7a7a7a;}
+
+.slide_cate .s_item.itemCur{ z-index:300; position:relative; background:#c5202d; color:#fff; }
+.slide_cate .s_item.itemCur h3{ }
+.slide_cate .s_item.itemCur h3 a{ color:#fff;}
+.slide_cate .s_item.itemCur h3 s{ visibility:visible; background-position:-191px -75px;}
+.slide_cate .s_item.last h3{ border:0;}
+/*end 左边分类*/
+
+
+/* 营养搭配*/
+.comb_commend{ }
+.comb_commend h2{ color:#c5202d; font:bold 24px/50px microsoft yahei; height:50px; padding:0 0 0 10px;}
+.comb_commend .mc{ border:#e5e5e5 1px solid; height:313px; font-family:microsoft yahei;}
+.comb_commend .tabmenu{ height:38px; overflow:hidden;}
+.comb_commend .tabmenu a{ float:left; display:inline-block; padding:0 20px 0 10px; color:#666; font:bold 14px/38px microsoft yahei; height:38px;}
+.comb_commend .tabmenu a.cur{ color:#c5202d;}
+.comb_commend .tabmenu a:hover{ text-decoration:none;}
+ 
+.comb_commend .tabcon{ width:100%; height:275px; }
+.comb_commend .comb_cont{ width:100%; height:275px; overflow:hidden;}
+.comb_commend .comb_cont .bigpic{ float:left; width:370px; height:275px; overflow:hidden;}
+.comb_commend .comb_cont .desc{ float:left; width:440px; padding:0 0 0 20px;}
+.comb_commend .desc .con1{ width:100%; padding:10px 0 0 0; overflow:hidden;}
+.comb_commend .desc .con1 li{ float:left; width:220px;}
+.comb_commend .desc .con1 li .title{ color:#c5202d; font-size:14px; font-weight:bold; margin:15px 0 0 0;}
+.comb_commend .desc .con1 li .title span{ color:#999; font-size:12px;}
+.comb_commend .desc .con1 li .price{ margin:10px 0 0 0; font-size:14px; font-weight:bold; color:#c5202d;}
+.comb_commend .desc .con1 li .price b{ font-size:18px;}
+.comb_commend .desc .con1 li .disc{ color:#666;}
+.comb_commend .desc .con1 li .btn{ margin:10px 0 0 0; }
+.comb_commend .desc .con1 li .btn a{ display:inline-block; background:#c5202d; width:114px; height:28px; border-radius:5px; text-align:center; font:bold 14px/28px microsoft yahei; color:#fff;}
+.comb_commend .desc .con1 li .btn a:hover{ text-decoration:none;}
+.comb_commend .desc .con2{ width:370px; overflow:hidden; }
+.comb_commend .desc .con2 h3{ font-size:18px; margin:10px 0 0 0;}
+.comb_commend .desc .con2 p{ font-size:14px; line-height:18px; height:54px; margin:10px 0 0 0; overflow:hidden;}
+.comb_commend .smallpic{ float:left; width:340px; margin:0px 0 0 0; position:relative;}
+
+.comb_commend .smallpic .prev,
+.comb_commend .smallpic .next{ position:absolute; top:120px;  background:url(../images/threeMeals_icon.png) no-repeat 0 0px; width:14px; height:23px;}
+.comb_commend .smallpic .prev{ left:0;}
+.comb_commend .smallpic .next{ right:0; background-position:-16px 0;}
+.comb_commend .smallpic .scroll{ margin:0 0 0 23px; width:287px; height:258px; overflow:hidden;}
+.comb_commend .smallpic .scroll ul{ float:left; display:inline; margin:0 0 0 9px; width:134px;}
+.comb_commend .smallpic .scroll ul li{ width:130px; height:120px; border:#f0f0f0 1px solid; margin:1px 1px 7px 1px; overflow:hidden;}
+.comb_commend .smallpic .scroll ul li.cur{ border:#c5202d 2px solid; margin:0 0 7px 0;}
+/*end 营养搭配*/
+
+
+/* 楼层推荐*/
+.meals_floor{ }
+.meals_floor .mt{ margin:10px 0 0 0; height:36px; font:bold 18px/36px microsoft yahei; color:#666; padding:0 0 0 10px; border-bottom:#c5202d 3px solid; overflow:hidden;}
+.meals_floor .mt b{ float:left; line-height:36px; font-size:24px; color:#c5202d; margin:0 8px 0 0;}
+.meals_floor .mt a{ float:right; margin:8px 5px 0 0; color:#c5202d; font-size:12px;}
+.meals_floor .mt a.mta{ margin:0 0 0 0; float:left;font:bold 18px/36px microsoft yahei; color:#666; text-decoration:none;}
+.meals_floor .mc{ background:#eee; width:100%; padding:0 0 6px; overflow:hidden;}
+.meals_floor .mc li{ float:left; display:inline; margin:6px 1px 0 6px; width:230px; height:320px; background:#fff; font:bold 12px microsoft yahei;}
+.meals_floor .mc li .adv{ width:230px; height:320px; overflow:hidden;}
+.meals_floor .mc li .pic{ width:230px; height:230px; margin:0px auto 7px; overflow:hidden;}
+.meals_floor .mc li .title{ height:18px; line-height:18px; color:#666; margin:0 0 0 12px; overflow:hidden; }
+.meals_floor .mc li .title a{ color:#666;}
+.meals_floor .mc li .price{ margin:2px 0 6px 12px; color:#c5202d; overflow:hidden;}
+.meals_floor .mc li .price b{ font-size:14px;  margin:0 40px 0 0;}
+.meals_floor .mc li .disc{ color:#c5202d; margin:2px 0 0 12px;}
+/*end 楼层推荐*/

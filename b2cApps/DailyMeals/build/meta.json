@@ -1,0 +1,21 @@
+{
+    "context":"DailyMeals",
+    "appEditor":{"enabled":true},
+    "renderEngine":"artTemplate",
+    "pages" : [
+        {"url":"/DailyMeals.jsp","name":"一日三餐","pageId":"DailyMeals","template":"pages/DailyMeals.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"}
+    ],
+    "templates" : [
+        {"template":"pages/DailyMeals.html","name":"一日三餐","description":"页面","dataProcessor":"@pages/index_process.jsx"}
+    ],
+    "rules":[{
+        "id":"fullControl",
+        "name":"完全控制",
+        "pattern":".*"
+    },{
+        "id":"readOnly",
+        "name":"查看权限",
+        "pattern":"(pages/viewAppPrivilege/.*)|(pages/viewUserPrivilege/.*)|(pages/home.jsx)"
+    }]
+
+}

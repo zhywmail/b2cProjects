@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>促销活动模板</title>
+<link href="../res/style/header.css" rel="stylesheet">
+<link href="../res/style/threeMeals.css" rel="stylesheet">
+</head>
+<body>
+<%=#importUrl("/header.html")%>
+<div  data-type="textLink" data-id="activeTemplate" style="position: relative;z-index: 999;">
+<%if(activeTemplate && activeTemplate.linkTo){%>
+<iframe style="width: 100%;border: 0px" src="<%=activeTemplate.linkTo%>"></iframe>
+<%}else{%>
+<iframe style="width: 100%;border: 0px" src="http://www.baidu.com"></iframe>
+<%}%>
+</div>
+<%=#importUrl("/footer.html")%>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/resources/bootstrap300/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style/app.css" rel="stylesheet">
+    <script src="/resources/bootstrap300/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:60px">
+    <div>
+        <span class="glyphicon glyphicon-home"></span>
+        <span class="titleSpan" style="padding-right: 30px;">自动审核订单接口</span>
+        <hr class="titleHr">
+    </div>
+    <div class="">
+        <table class="table table-bordered table-over">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>接口名称</th>
+                <th>地址</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{~it.interfaceRecordList:value:index}}
+            <tr>
+                <td >{{=value.idIndex}}</td>
+                <td>{{=value.name}}</td>
+                <td><a href="{{=value.url}}" >{{=value.url}}</a></td>
+            </tr>
+            {{~}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

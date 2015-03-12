@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="GoodsPriceInquery" default="all" basedir=".">
+    <property file="../build.properties"></property>
+    <target name="build">
+        <mkdir dir="out"/>
+        <exec executable="java">
+            <arg line="-jar"></arg>
+            <arg path="../lib/appBuilder.jar"/>
+            <arg line="src/"></arg>
+            <arg line="out/GoodsPriceInquery.zip"/>
+        </exec>
+    </target>
+
+    <target name="deploy">
+        <exec executable="java">
+            <arg line="-jar "></arg>
+            <arg path="../lib/appDeployer.jar"/>
+            <arg line="${deployUrl}"></arg>
+            <arg line="${deployPass}"></arg>
+            <arg line="out/GoodsPriceInquery.zip"/>
+            <arg line="商品价格查询"/>
+            <arg line="GoodsPriceInquery"/>
+        </exec>
+    </target>
+
+    <target name="all" depends="build,deploy">
+    </target>
+</project>

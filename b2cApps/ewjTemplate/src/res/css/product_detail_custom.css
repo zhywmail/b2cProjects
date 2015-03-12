@@ -1,0 +1,132 @@
+.nav_poistion a {
+    color: inherit;
+}
+.detail_meta .preview .share .title {
+    float: left;
+    margin-right: 10px;
+    height: 16px;
+    line-height: 16px;
+    margin-top: 5px;
+}
+.detail_meta .detail_right .dt_lins .norm_list > a.disabled {
+    border: 1px dashed #d1d1d1;
+    margin: 0 9px 0 -1px;
+    height: 32px;
+    line-height: 32px;
+}
+.detail_meta .btnAddToCart{
+    cursor: pointer;
+}
+.product > .left > .nav_list{
+    margin-bottom: 15px;
+}
+.product > .left > .best {
+    margin-top: 0;
+}
+
+.product > .left > .best > .list > li .price.small {
+    font-size: 14px;
+}
+.product > .left > .best > .list > li .price.small span span {
+    font-size:20px;
+}
+.product > .left > .best > .list > li .but25{
+    position: relative;
+}
+
+.product > .right > .hot_offers .list > li .price{
+    width: 110px;
+}
+
+.product > .right > .hot_offers.combination .total .price.small > span{
+    font-size: 21px;
+}
+.product > .right > .hot_offers.combination .total .price.small > span span{
+    font-size: 29px;
+}
+.product > .right > .hot_offers.combination .total .price .cankao{font-size: 14px !important;}
+
+
+
+.product > .left > .nav_list > .list > a{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.detail_meta .detail_right .dt_lins > .list > li{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 660px;
+}
+
+
+.product .crumb .active {
+    display: inline-block;
+    height: 19px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: -3px;
+    white-space: nowrap;
+    width: 280px;
+}
+
+.slide-bd .name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.successPanel .passIcon{
+    display: inline-block;
+    background: url(../images/iconPass.png) no-repeat;
+    height: 36px;
+    width: 37px;
+}
+
+
+.detail_meta .detail_right .dt_lins.sale li {
+    /*overflow: hidden;*/
+    /*height: 18px;*/
+    /*line-height: 18px;*/
+}
+
+.detail_meta .detail_right .dt_lins.sale .list{
+    /*overflow: hidden;*/
+    /*height: 87px;*/
+}
+
+.detail_meta .detail_right .money .cankao{
+    position: relative;
+    display: inline-block;
+    top: 7px;
+}
+
+.product > .right > .detail_cont .center_html{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.product > .right > .detail_cont .appraisal{
+    padding-top: 0;
+}
+
+/*.tabItem{*/
+    /*display: block;*/
+/*}*/
+
+.product > .left > .best > .list > li .img_view img,
+.product > .right > .hot_offers .list > li .img_view img {
+    width:auto;
+    height:auto;
+    text-align: center;
+}
+
+.preview .bigImg #midimg,#imageMenu li img{
+    width:auto;
+    height:auto;
+}
+
+
+/*.preview .bigImg{*/
+    /*text-align: center;*/
+/*}*/

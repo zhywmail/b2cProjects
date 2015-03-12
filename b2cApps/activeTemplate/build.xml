@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE project [
+        <!ELEMENT project (property|target)*>
+        <!ATTLIST project
+                name CDATA #REQUIRED
+                default CDATA #REQUIRED
+                basedir CDATA #REQUIRED>
+        <!ELEMENT property (#PCDATA)>
+        <!ATTLIST property
+                file CDATA #REQUIRED>
+        <!ELEMENT target (exec|delete|copy|mkdir)*>
+        <!ATTLIST target
+                depends CDATA #IMPLIED
+                name CDATA #REQUIRED>
+        <!ELEMENT exec (arg)*>
+        <!ATTLIST exec
+                executable CDATA #REQUIRED>
+        <!ELEMENT arg (#PCDATA)>
+        <!ATTLIST arg
+                line CDATA #IMPLIED
+                path CDATA #IMPLIED>
+        <!ELEMENT delete (fileset)*>
+        <!ATTLIST delete
+                includeemptydirs CDATA #REQUIRED
+                quiet CDATA #REQUIRED
+                failonerror CDATA #REQUIRED>
+        <!ELEMENT fileset (include)*>
+        <!ATTLIST fileset
+                dir CDATA #REQUIRED
+                includes CDATA #IMPLIED>
+        <!ELEMENT copy (fileset)*>
+        <!ATTLIST copy
+                todir CDATA #REQUIRED
+                overwrite CDATA #REQUIRED>
+        <!ELEMENT include (#PCDATA)>
+        <!ATTLIST include
+                name CDATA #REQUIRED>
+        <!ELEMENT mkdir (#PCDATA)>
+        <!ATTLIST mkdir
+                dir CDATA #REQUIRED>
+        ]>
+<project name="activeTemplate" default="all" basedir=".">
+    <property file="../build.properties"></property>
+    <target name="build" depends="init,copy,doImport,closure,buildZip"></target>
+    <target name="build-debug" depends="init,copy,doImport,rename,buildZip,deploy"></target>
+
+    <target name="rename" depends="doImport">
+
+    </target>
+
+    <target name="closure" depends="doImport">
+
+    </target>
+
+    <target name="doImport" >
+        <exec executable="java">
+            <arg line="-jar "></arg>
+            <arg path="lib/importer.jar"/>
+            <arg line="-in"></arg>
+            <arg line="src/pages/activeTemplate.html"/>
+            <arg line="-out"></arg>
+            <arg line="build/pages/activeTemplate.html"/>
+            <arg line="-libs"/>
+            <arg line="."/>
+        </exec>
+    </target>
+
+    <target name="clean">
+        <delete includeemptydirs="true" quiet="true" failonerror="false">
+            <fileset dir="build" includes="**/*"/>
+        </delete>
+    </target>
+
+    <target name="copy">
+        <copy todir="build" overwrite="true">
+            <fileset dir="src">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+    <target name="buildZip">
+        <mkdir dir="out"></mkdir>
+        <exec executable="java">
+            <arg line="-jar "></arg>
+            <arg path="lib/appBuilder.jar"/>
+            <arg line="build"></arg>
+            <arg line="out/activeTemplate.zip"/>
+        </exec>
+    </target>
+    <target name="deploy">
+        <exec executable="java">
+            <arg line="-jar "></arg>
+            <arg path="lib/appDeployer.jar"/>
+            <arg line="http://127.0.0.1/appMarket/handler/deploy.jsp"></arg>
+            <arg line="123456"></arg>
+            <arg line="out/activeTemplate.zip"/>
+            <arg line="activeTemplate"/>
+        </exec>
+    </target>
+
+
+    <target name="all" depends="build">
+    </target>
+
+    <target name="all-debug" depends="build-debug"></target>
+
+    <target name="init">
+        <mkdir dir="build/client"></mkdir>
+        <mkdir dir="out"></mkdir>
+    </target>
+
+</project>

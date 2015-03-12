@@ -1,0 +1,7 @@
+{
+    "libs_namespace": "EsbControlCenter",
+    "libs": ["services/EsbLogService.jsx","services/EsbLogQuery.jsx"],
+    "obj_prefixes": ["esbLog"],
+    "list_prefixes": ["esbLog"]
+
+}

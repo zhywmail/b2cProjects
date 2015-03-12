@@ -1,0 +1,15 @@
+{
+    "libs_namespace": "OrderConfirm",
+    "libs": ["services/OrderConfirmService.jsx"],
+    "obj_prefixes": ["OrderConfirm"],
+    "list_prefixes": ["OrderConfirm"],
+    "eventHandlers":[
+        {
+            "eventName":"orderAddAfter",
+            "pageId":"eventHandlers/doAfterOrdered.jsx",
+            "handlerId":"orderAddAfter_OrderAutoConfirmForPayOffLine",
+            "description":"非首单且金额不超过系统设置阀值的订单无需人工确认订单，系统自动确认。"
+        }
+    ]
+
+}

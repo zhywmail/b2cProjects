@@ -1,0 +1,83 @@
+/* Created by Qianglong Mo 2015 */
+
+/* my favorite */
+.myFavorite {}
+
+/* favorite filter */
+.myFavoriteFilter {
+    border: 1px solid #ddd;
+}
+
+.myFavoriteFilter .select {
+    margin: 3px 10px 0 0 ;
+}
+
+.myFavoriteFilter .selectBd{
+    width: 200%;
+    left: auto;
+    right: 0;
+}
+
+.myFavoriteFilterNav {
+    padding: 7px 0;
+}
+
+.myFavoriteFilterNav li {
+    float: left;
+    line-height: 16px;
+    padding: 0 16px;
+    border-right: 1px solid #e6e6e6;
+}
+
+.myFavoriteFilterNav li:last-child {
+    border-right: none;
+}
+
+.myFavoriteFilterNav li a {
+    font-size: 14px;
+    color: #616161;
+}
+
+.myFavoriteFilterNav li.active a,
+.myFavoriteFilterNav li:hover a{
+    color: #e14041;
+}
+
+
+/* table operate */
+.myFavoriteTableOperate {
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    padding: 22px 0;
+    text-align: left;
+}
+
+.operateCheckbox {
+    margin-right: 22px;
+}
+
+.operateCheckbox .checkbox i {
+    margin-top: -1px;
+}
+
+.myFavoriteTableOperate .operate {
+    color: #555;
+    margin-right: 22px;
+    cursor: pointer;
+}
+
+.myFavoriteTableOperate .operate:hover {
+    color: #e14041;
+}
+
+.myFavorite .tableGoodInfo .checkbox {
+    margin: 0 25px;
+}
+
+.myFavorite .tableBd td {
+    height: 130px;
+}
+
+
+

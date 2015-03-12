@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>货到付款订单自动审核阈值</title>
+    <link href="/resources/bootstrap300/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style/app.css" rel="stylesheet">
+    <script type="text/javascript" src="/resources/jquery-1.7.2.min.js"></script>
+    <script src="/resources/bootstrap300/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container" style="margin-top:60px">
+    <div>
+        <span class="glyphicon glyphicon-home"></span>
+        <span class="titleSpan" style="padding-right: 30px;">货到付款订单自动审核阈值</span>
+        <hr class="titleHr">
+    </div>
+    <div class="">
+        {{if(it.results){}}
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>单笔订单金额上限</th>
+                <th>单笔订单数量上限</th>
+                <th>历史订单数下限</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{=it.results.max_amount}}</td>
+                <td>{{=it.results.max_quantity}}</td>
+                <td>{{=it.results.min_orders}}</td>
+                <td><a href="EditCondition.jsx?id={{=it.results.id}}&m={{=it.merchantId}}">编辑</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        {{}}}
+    </div>
+    <div >
+        <a class="btn btn-primary" style="margin-left:20px" href="AddCondition.jsx?m={{=it.merchantId}}">添加配置</a>
+    </div>
+</div>
+
+<div class="container" style="margin-top:10px">
+<div class="alert alert-success" >
+    {{if(it.results){}}
+    当前配置的自动审核规则：
+    单笔订单金额小于或等于<strong>{{=it.results.max_amount}}</strong>元，&nbsp;
+    单笔订单商品数量小于或等于<strong>{{=it.results.max_quantity}}</strong>个，&nbsp;
+    会员历史订单数大于或等于<strong>{{=it.results.min_orders}}</strong>个
+    {{}}}
+
+</div>
+    </div>
+
+</body>
+</html>

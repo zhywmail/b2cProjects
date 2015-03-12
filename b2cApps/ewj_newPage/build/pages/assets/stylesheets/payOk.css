@@ -1,0 +1,199 @@
+.headerShoppingStep {
+    position: relative;
+    float: right;
+    margin-top: 22px;
+}
+
+.headerShoppingStep li {
+    float: left;
+    white-space: nowrap;
+    position: relative;
+}
+
+.headerShoppingStep li .line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #d1d1d1;
+}
+
+.headerShoppingStep li .radius {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: -14px;
+    left: 50%;
+    margin-left: -14px;
+    background: url(../images/shopcat_stup.png) no-repeat 0 -28px;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    line-height: 28px;
+}
+
+.headerShoppingStep li .title {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+    min-width: 175px;
+    float: left;
+    text-align: center;
+}
+
+.headerShoppingStep li.active .line {
+    background-color: #79b235;
+}
+
+.headerShoppingStep li.active .radius {
+    background-position: 0 0;
+}
+
+.headerShoppingStep li.active .title {
+    color: #79b235;
+    font-weight: bold;
+}
+
+.headerShoppingStep li.over .line {
+    background-color: #d2e5bb;
+}
+
+.headerShoppingStep li.over .radius {
+    background-position: 0 -57px;
+}
+
+.headerShoppingStep li.over .title {
+}
+
+
+
+
+
+
+.product > .ok_tip {
+    width:100%;
+    float:left;
+    margin:65px 0 30px;
+    padding-bottom:40px;
+    border-bottom:1px solid #d4d4d4;
+}
+    .product > .ok_tip > .ok {
+        float:left;
+        margin:0 15px;
+    }
+
+    .product > .ok_tip .tt1 {
+        font-size:28px;
+        float:left;
+    }
+    .product > .ok_tip .tt2 {
+        float:left;
+        clear:both;
+        font-size:14px;
+        color:#888;        
+        white-space:normal;
+    }
+.product .order_xq {
+    float: left;
+    font-size: 14px;
+    color: #333;
+    clear: both;
+    margin:0 0 30px 88px;
+}
+    .product .order_xq > div {
+        margin-bottom: 10px;
+        width:100%;
+    }
+    .product .order_xq > .but25 {
+        border:1px solid #d1d1d1;
+        line-height:35px;
+        float:left;
+        margin:30px 10px 0 0;
+        font-size:16px;
+        padding:0 25px;
+        -webkit-transition: all .25s;
+        -moz-transition: all .25s;
+        -ms-transition: all .25s;
+        -o-transition: all .25s;
+        transition: all .25s;
+    }
+
+    .product .order_xq > .but25:hover {
+        border-color: #e14041;
+        color: #e14041;
+    }
+
+    .product > .best{
+        margin: 15px 0;
+        width: 100%;
+        float: left;
+        background-color: #fff;
+    }
+        .product > .best > .title{
+            width:100%;
+            height:50px;
+            line-height:50px;
+            color:#222;
+            font-size:16px;
+            float:left;
+            text-indent:20px;
+            background-color:#fff;
+            cursor:pointer;
+            transition:all 0.3s ease;
+            background:url(../images/index_baner1_line.png) repeat-x 0 bottom;
+        }
+        .product > .best > .list {
+            overflow:hidden;
+            width:100%;
+            float:left;
+        }
+            .product > .best > .list > li {
+                width:180px;
+                padding:15px 29px;
+                float:left;
+                word-break:break-all;
+            }
+                .product > .best > .list > li .img_view{
+                    width:180px;
+                    height:180px;
+                    float:left;
+                    overflow:hidden;
+                    cursor:pointer;
+                }
+
+                    .product > .best > .list > li .img_view img {
+                        width:100%;
+                        height:100%;
+                    }
+                .product > .best > .list > li .name {
+                    width:100%;
+                    float:left;
+                    font-size:14px;
+                    color:#333;
+                    margin:5px 0;
+                    cursor:pointer;
+                    transition:all 0.5s ease;
+                }
+
+                    .product > .best > .list > li .name:hover {
+                        color:#e14041;
+                    }
+                .product > .best > .list > li .price{
+                    width:90px;
+                    float:left;
+                    font-size:18px;
+                    color:#e14041;
+                    line-height:20px;
+                }
+                    .product > .best > .list > li .price span span{
+                        font-size:24px;
+                    }
+                    .product > .best > .list > li .price s {
+                        font-size:15px;
+                        color:#bbb;
+                        display:block;
+                    }
+                .product > .best > .list > li .but25 {
+                    margin-top:5px;
+                }

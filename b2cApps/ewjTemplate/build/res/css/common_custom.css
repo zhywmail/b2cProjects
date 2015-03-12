@@ -1,0 +1,98 @@
+@font-face {
+    font-family: fp-font;
+    src: url(/resources/ewj/font/ico.eot);
+    src: url('/resources/ewj/font/ico.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/resources/ewj/font/ico.woff') format('woff'), /* chrome��firefox */
+    url('/resources/ewj/font/ico.ttf') format('truetype'), /* chrome��firefox��opera��Safari, Android, iOS 4.2+*/
+    url('/resources/ewj/font/ico.svg#svgFontName') format('svg');   /*iOS 4.1- */
+}
+
+a img{
+    color: #999;
+}
+
+.header .center{height: 124px;}
+.headerSearch .text .headerSearchBtn{
+    border: 0 none;
+}
+
+.headerSearch .text .headerSearchBtn:active{
+    background-position-x: 6px\9;
+    background-position-y: 6px\9;
+}
+
+.sideGoodCategories{
+    position: absolute;
+}
+.sideGoodCategoriesMenu .list li{overflow: hidden;}
+.sideGoodCategoriesMenu .list li > a{color:inherit;}
+
+.sideGoodCategoriesDetail .right-recommend{
+    border-left:1px solid #eee;
+    height: 440px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 666px;
+    width: 268px;
+}
+.sideGoodCategoriesDetail .right-recommend .xianAd,.sideGoodCategoriesDetail .right-recommend .recommend{
+    border-left:0 none;
+    position: static;
+}
+.headerSearchHotkey{height: 17px;overflow: hidden;}
+
+.floatTips{
+    display: none;
+    /*margin-left: -90px;*/
+    /*margin-top: -70px;*/
+    /*top: 0;*/
+    /*left: 0;*/
+}
+.floatTips.error{
+    background: #fff url("../images/icon-failureSmall.png") no-repeat 14px 7px;
+    color: #e14041;
+}
+
+.floatEntry .count{
+    behavior: url(./PIE.htc);
+}
+
+
+/*普频990*/
+.w990 .center{ width:990px;}
+.w990 .header .headerSearch{margin-left: 41px;}
+.w990 .header .headerBiaoyu{margin-right: 40px;}
+.w990 .sideGoodCategories .sideGoodCategoriesHd{ margin-left: -495px;}
+.w990 .sideGoodCategories .sideGoodCategoriesBd{ margin-left: -495px;}
+.w990 .sideGoodCategories .sideGoodCategoriesDetail{width: 735px;}
+.w990 .footer .manifesto{ width:990px;}
+.w990 .position{ width:990px;padding: 55px 0 5px;margin: 0 auto;color: #999;}
+.w990 .position a{ color: #333;}
+.w990 .main{ margin:55px auto 0 auto !important;background-color:#fff;}
+.w990 .bigbox{ margin:auto !important;width: 990px !important;}
+/*.w990{font-size: 12px;}*/
+
+.w990 .manage_add .btn{background: none;border: 0 none;}
+.w990 .tab_add .bd li.select{height: auto;padding: 0;margin: 0;}
+
+.w990 .sideGoodCategoriesDetail .item{
+    width: 734px;
+}
+.w990 .sideGoodCategoriesDetail .listWrap{width:466px }
+.w990 .sideGoodCategoriesDetail .list .itemGroup{max-width: 320px;}
+.w990 .sideGoodCategoriesDetail .right-recommend{left: 466px;}
+
+.w990 .subbox ul li a{color: #333 !important;}
+
+/*旧找回密码的*/
+.w990 .password{background-color: #fff;}
+.w990 .password .method .box h3{font-size: 16px;}
+.w990 .password .method .box .btn{
+    background: none;
+    border: 0 none;
+    height: auto;
+    line-height: inherit;
+}
+
+/* end 普频990*/

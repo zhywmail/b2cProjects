@@ -1,0 +1,124 @@
+.index_banner_group {
+    height: 440px;
+    position: relative;
+}
+.index_banner_group .banner_list > li > a{
+    position: relative;
+}
+
+.sideGoodCategories {
+    background:none;
+    left: 50%;
+    width: auto;
+}
+
+.baner1 .right .cont .bottom .b_b .buy{
+    margin-top: 15px;
+}
+
+.baner2 .ico_list{max-height: 120px;overflow: hidden;}
+.baner2 .ico_list > li a{color:inherit;}
+
+.baner3 > li > .left > a > img {
+    display: block;
+    width: 100%;
+    height: 393px;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+.baner3 > li > .left > .pop{
+    display: block;
+}
+
+.baner3 > li > .left > .pop .name{
+    cursor: pointer;
+}
+.baner5 > .left > .list > a{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.baner6 .right .cont .name{
+    max-height: 40px;
+    overflow: hidden;
+}
+.baner6 .right .cont .title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.baner3 > li > .left > .pop .tip > .txt{
+    display: inline-block;
+    overflow: hidden;
+    max-height: 60px;
+    max-width: 330px;
+}
+
+.baner6 .right .cont{
+    display: block;
+}
+
+.brandSlideHd .prev,.brandSlideHd .next{
+    display: none;
+}
+
+.baner3 > li > .left .left-img{
+    display: block;
+    height: 203px;
+}
+
+.baner5 .right > .bgtt > .left .left-img{
+    display: block;
+    height: 220px;
+}
+.textPrimary.price strong{
+    margin-left: 0;
+}
+
+.baner1 .right .cont .bottom .b_b .tg .t1,.baner1 .right .cont .bottom .b_b .tg .t1 strong{
+    margin-left: 0;
+}
+
+.baner3 > li > .left > a > img{
+    width: auto;
+}
+.baner3 > li > .right .tt1 > .i_view img{
+    width: auto;
+    max-width: 100%;
+}
+.baner4 > .list > li > .img_view img{
+    width: auto;
+}
+.baner5 > .right > .bgll > .img_view img{
+    width: auto;
+    height: auto;
+}
+.baner5 .right > .bgtt > .right .tt1 > .i_view img{
+    width: auto;
+    height: auto;
+}
+.baner6 .left > .list > li .img_view > img{
+    height: auto;
+    width: auto;
+}
+.baner6 .right .cont .img_view img{
+    height: auto;
+    width: auto;
+}
+.baner1 .right .cont .img_view img{
+    height: auto;
+    width: auto;
+}
+.baner3 > li > .left > img{
+    height: auto;
+    width: auto;
+}
+.baner5 .right > .bgtt > .left img{
+    height: auto;
+    width: auto;
+}

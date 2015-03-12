@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+<head>
+<title><%=seo ? seo.seo_title : ''%></title>
+<meta name="keywords" content="<%=seo ? seo.seo_keywords : ''%>"/>
+<meta name="description" content="<%=seo ? seo.seo_description : ''%>"/>
+<meta http-equiv="X-UA-Compatible" content="edge" />
+<meta name="renderer" content="webkit"/>
+<link rel="stylesheet" type="text/css" href="/resources/ewj/login/css/common.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="/resources/ewj/login/css/common_custom.css" charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../res/css/product_list.css" />
+<link rel="stylesheet" type="text/css" href="../res/css/product_list_custom.css" />
+<%if(productionMode){%>
+<script>var serverUrl = "<%=webUrl%>",rappId = "<%=rappId%>";</script>
+<script src="/resources/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../res/js/jquery.lazyloaded.js" type="text/javascript"></script>
+<script src="/resources/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="../res/js/SkuSelector.js"></script>
+<script type="text/javascript" src="../res/js/product_list.js"></script>
+<script type="text/javascript" src="../res/js/page.js"></script>
+<%}%>
+</head>
+<body>
+<%=#importUrl("/header.html?keyword=" + searchKeyword)%>
+<%
+
+function rebuildPageUrl(key,value){
+var addKey = (!requestParams[key]) && value != "";
+var queryString = "?";
+for(var k in requestParams){
+
+var val = requestParams[k];
+if(k == key){
+if(value == "")continue;
+val = value;
+}
+queryString += k + "=" + val + "&";
+}
+if(addKey){
+queryString += key + "=" + value;
+}else{
+queryString = queryString.substring(0,queryString.length - 1);
+}
+return requestURI + queryString;
+}
+
+
+function rebuildUrl(key,value){
+var addKey = (!requestParams[key]) && value != "";
+var queryString = "?";
+for(var k in requestParams){
+if(requestParams[k] == ""|| k == "page"){continue;}
+var val = requestParams[k];
+if(k == key){
+if(value == "")continue;
+val = value;
+}
+queryString += k + "=" + val + "&";
+}
+if(addKey){
+queryString += key + "=" + value;
+}else{
+queryString = queryString.substring(0,queryString.length - 1);
+}
+return requestURI + queryString;
+}
+
+function rebuildAttrUrl(key,value){
+var otherParams = requestParams["otherParams"];
+var params = "";
+if(otherParams){
+var addKey = otherParams.indexOf(key) == -1;
+var split1 = otherParams.split(";");
+for(var i=0;i< split1.length;i++){
+if(split1[i] == ""){continue;}
+var split2 = split1[i].split("--");
+if(split2[0] == key){
+if(value != ""){
+params+=key+"--"+value + ";";
+}else{
+
+}
+
+}else{
+params+=split2[0]+"--"+split2[1] + ";";
+}
+}
+
+if(addKey){
+if(value !=""){
+params+=key+"--"+value;
+}
+}else{
+if(params !=""){
+params = params.substring(0,params.length - 1);
+}
+}
+}else{
+if(value!=""){
+params+=key+"--"+value;
+}else{
+params="";
+}
+}
+var queryString = "?";
+for(var k in requestParams){
+if(k == "otherParams"){continue;}
+queryString += k + "=" + requestParams[k] + "&";
+}
+if(params != ""){
+queryString+="otherParams="+params;
+}else{
+queryString = queryString.substring(0,queryString.length - 1);
+}
+
+return requestURI + queryString;
+}
+%>
+<img id="greyImg" src="../res/images/grey.gif" style="display: none;"/>
+<div class="backededed" id="page_content">
+<div class="center product">
+<div class="crumb">
+<a href="/">首页</a><span class="arrow"></span>
+<%if(position && position.length > 0){%>
+<%for(var i=0;i< position.length;i++){%>
+<%if(i!=position.length-1){%>
+<a href="<%=position[i].url%>"><%=position[i].title%></a><span class="arrow"></span>
+<%}else{%>
+<span class="active"><%=position[i].title%></span>
+<%}}}%>
+</div>
+<div class="left">
+<div class="nav_list">
+<span class="title"><%if(curColumn.id != 'c_10000'){%><span class="ico"><%if(curColumn.DynaAttrs && curColumn.DynaAttrs['attr_product_col_001']){%><%=#curColumn.DynaAttrs['attr_product_col_001'].value%><%}%></span><%}%><%=curColumn.title%></span>
+<%if(columnChildren && columnChildren.length > 0){%>
+<%
+for(var i=0;i < columnChildren.length;i++){
+var hasChildren = columnChildren[i].children && columnChildren[i].children.length > 0 ? true : false;
+%>
+<span class="title2"><a href="<%=requestURI%>?columnId=<%=columnChildren[i].id%>"><%=columnChildren[i].title%></a><%if(hasChildren){%><span class="i"></span><%}%></span>
+<%if(hasChildren){%>
+<div class="list">
+<%for(var j=0;j< columnChildren[i].children.length;j++){%>
+<%var subColumn = columnChildren[i].children[j];%>
+<a href="<%=requestURI%>?columnId=<%=subColumn.id%>"><%=subColumn.title%></a>
+<%}%>
+</div>
+<%}%>
+<%}%>
+<%}%>
+</div>
+
+<%if(widget && widget.discount_commend && widget.discount_commend.length > 0){%>
+<div class="best">
+<div class="title" data-type="htmlSource" data-id="widget:discount_commend_title"><%=widget && widget.discount_commend_title ? widget.discount_commend_title : '最优惠'%></div>
+<ul class="list" data-type="productGroup" data-id="widget:discount_commend" data-spec="180X180">
+<%for(var i=0;i< widget.discount_commend.length;i++){%>
+<%var product = widget.discount_commend[i],pid = (product.id).replace("p_","");%>
+<%var splitMemberPrice = (product.memberPrice + "").split(".");%>
+<li>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" class="img_view">
+<img src="<%=!productionMode ? product.imgUrl : ''%>" original="<%=productionMode ? product.imgUrl : ''%>" alt="<%=product.name%>"/>
+</a>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" title="<%=product.name%>"><span class="name"><%=product.name%> </span></a>
+<span class="price <%= product.memberPrice > 9999 ? 'small' : ''%>">
+<span>¥<span><%=splitMemberPrice[0]%></span>.<%=splitMemberPrice.length > 1 ? splitMemberPrice[1] : '00'%></span>
+<%if(product.marketPrice > 0){%><s>¥<%=product.marketPrice%></s><%}%>
+</span>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" pid="<%=product.id%>" class="but25 btn-buy">加入购物车</a>
+</li>
+<%}%>
+</ul>
+</div>
+<%}else if(!productionMode){%>
+<div class="best">
+<div class="title" data-type="htmlSource" data-id="widget:discount_commend_title"><%=widget && widget.discount_commend_title ? widget.discount_commend_title : '最优惠'%></div>
+<ul class="list" data-type="productGroup" data-id="widget:discount_commend" data-spec="180X180">
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+<s>¥148.00</s>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+<s>¥148.00</s>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+<s>¥148.00</s>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+<s>¥148.00</s>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+<s>¥148.00</s>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+</ul>
+</div>
+<%}%>
+</div>
+<div class="right">
+<!-- filter -->
+<div class="clear"></div>
+<div class="filterMod enableSelect pr">
+<!-- 根据筛选条件进入新页面后，才显示以下结构 -->
+<%if(selectedConditions && selectedConditions.length > 0){%>
+<div class="filterMod-hd clearfix" style="">
+<p class="fl col01">已选条件: </p>
+<%for(var i=0;i < selectedConditions.length;i++){%>
+<p class="fl ml5 detail">
+<a href="<%= selectedConditions[i].type == 'brand' ? rebuildUrl('brandIds','') : rebuildAttrUrl(selectedConditions[i].attrId,'') %>">
+<%=selectedConditions[i].key%>：<span><%=selectedConditions[i].value%></span>
+<i class="close">x</i>
+</a>
+</p>
+<%}%>
+</div>
+<%}%>
+
+<!-- end 根据筛选条件进入新页面后, 才显示以下结构 -->
+<%if((searchCondition.brandList && searchCondition.brandList.length > 0) || searchCondition.DynaAttr&&searchCondition.DynaAttr.length>0){%>
+<div class="filterMod-bd">
+<!-- end brand conditional -->
+<%if(searchCondition.brandList && searchCondition.brandList.length > 0 && !requestParams['brandIds']){%>
+<div class="filter-conditional filter-row clearfix">
+<div class="condition-wrap">
+<div class="clearfix">
+<div class="fl col01">品牌：</div>
+<div class="condition-list fl">
+<ul class="condition-listContent fl" isBrand="true">
+<li class="all active"><a href="<%= rebuildUrl('brandId','') %>"><p>不限</p></a></li>
+<%for(var i=0;i< searchCondition.brandList.length;i++){%>
+<li>
+<a href="<%= rebuildUrl('brandIds',searchCondition.brandList[i].name) %>" class="condition-link">
+<div class="checkbox">
+<input type="hidden" value="<%=searchCondition.brandList[i].name%>"/>
+<i></i>
+</div>
+<p><%=searchCondition.brandList[i].displayName%><span>(<%=searchCondition.brandList[i].value%>)</span></p>
+</a>
+</li>
+<%}%>
+</ul>
+</div>
+<button class="multiSelect fr" style=""><i></i><span>多选</span></button>
+</div>
+<div class="confirmGroup mt10">
+<a class="btn btnPrimary confirmBtn" href="">确定</a>
+<div class="btn btnDefault cancelBtn">取消</div>
+</div>
+</div>
+</div>
+<%}%>
+
+<%if(searchCondition.DynaAttr&&searchCondition.DynaAttr.length>0){%>
+<%for(var i=0;i < searchCondition.DynaAttr.length;i++){%>
+<%var value = searchCondition.DynaAttr[i];%>
+<%if(value.isSelected){continue;}%>
+<div class="filter-conditional filter-row clearfix" style="<%if(i > 3){%>display:none;<%}%>">
+<div class="condition-wrap">
+<div class="clearfix">
+<div class="fl col01"><%=value.attrName%>：</div>
+<div class="condition-list fl">
+<ul class="condition-listContent fl">
+<li class="all active"><a href="<%= rebuildAttrUrl(value.attrId,'')%>"><p>不限</p></a></li>
+<%if(value.displayValues){%>
+<%for(var j=0;j < value.displayValues.length;j++){%>
+<li>
+<a href="<%= rebuildAttrUrl(value.attrId,value.displayValues[j].id)%>">
+<div class="checkbox">
+<input type="hidden">
+<i></i>
+</div>
+<p><%=value.displayValues[j].name%><span>(<%=value.displayValues[j].value%>)</span></p>
+</a>
+</li>
+<%}%>
+<%}%>
+</ul>
+</div>
+<!--<button class="multiSelect fr"><i></i><span>多选</span></button>-->
+</div>
+<div class="confirmGroup mt10">
+<div class="btn btnPrimary confirmBtn">确定</div>
+<div class="btn btnDefault cancelBtn">取消</div>
+</div>
+</div>
+</div>
+<%}%>
+<%}%>
+<!-- end brand conditional -->
+</div>
+<%if(searchCondition.DynaAttr&&searchCondition.DynaAttr.length>4){%>
+<div class="filter-more f14">
+<p>更多选项（<%for(var i=4;i< searchCondition.DynaAttr.length;i++){%><%=searchCondition.DynaAttr[i].attrName%><%if(i< searchCondition.DynaAttr.length-1){%>，<%}else{%>等<%break;}%><%}%>）<i></i></p>
+</div>
+<%}%>
+<%}%>
+</div>
+<!-- end filter -->
+
+
+
+
+
+<div class="filter_nav enableSelect">
+<a href="<%= rebuildUrl('orderBy','default') %>" class="item default <%=searchHistory.orderBy=='default'||searchHistory.orderBy==undefined ? 'active' : ''%>"><span><i>默认</i></span></a>
+<%if(searchHistory.orderBy=="priceLow"){%>
+<a href="<%= rebuildUrl('orderBy','priceHigh') %>" class="item price active toggle"><span><i>价格</i></span></a>
+<%}else if(searchHistory.orderBy=="priceHigh"){%>
+<a href="<%= rebuildUrl('orderBy','priceLow') %>" class="item price active"><span><i>价格</i></span></a>
+<%}else{%>
+<a href="<%= rebuildUrl('orderBy','priceLow') %>" class="item price"><span><i>价格</i></span></a>
+<%}%>
+<a href="<%= rebuildUrl('orderBy','saleCount') %>" class="item count <%=searchHistory.orderBy=='saleCount' ? 'active' : ''%>"><span><i>销量</i></span></a>
+<a href="<%= rebuildUrl('orderBy','publishTime') %>" class="item new <%=searchHistory.orderBy=='publishTime' ? 'active' : ''%>"><span><i>最新上架</i></span></a>
+<div class="check">
+<!--<div class="checkbox enableSelect" id="myFavoriteSelectAll">-->
+<!--<input type="hidden"/>-->
+<!--<i></i>-->
+<!--</div>-->
+<!--<label for="chuxiaoyouhui">促销优惠</label>-->
+<!--<div class="checkbox enableSelect" id="myFavoriteSelectAll">-->
+<!--<input type="hidden"/>-->
+<!--<i></i>-->
+<!--</div>-->
+<!--<label for="jinkou">进口商品</label>-->
+<!--<div class="checkbox enableSelect" id="myFavoriteSelectAll">-->
+<!--<input type="hidden"/>-->
+<!--<i></i>-->
+<!--</div>-->
+<!--<label for="youhuo">有货</label>-->
+</div>
+
+<div class="statistics">
+共<span class="colore14041"><%=productList.total%></span>  件商品
+<a href="<%= pageCur > 1 ? rebuildPageUrl('page',(pageCur-1)+'') : 'javascript:;'%>" class="ico a_left">&#x2747;</a> <%=pageCur%> / <%=pageNum%><a href="<%= pageCur < pageNum ? rebuildPageUrl('page',(pageCur+1)) : 'javascript:;'%>" class="ico a_right">&#x2714;</a>
+</div>
+</div>
+
+<ul class="product_list">
+<%if(productList && productList.total > 0){%>
+<%for(var i=0;i < productList.products.length;i++){%>
+<%var product = productList.products[i],pid = (product.id).replace("p_","");%>
+<%var proLogo = (product.logos=='/upload/nopic_200.jpg' ? product.logos : product.logos[0]);%>
+<%var splitMemberPrice = (product.memberPrice + "").split(".");%>
+<li objId="<%=product.id%>" mid="<%=product.merchantId%>">
+<div class="mask"></div>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" class="img_view">
+<img alt="<%= product.name ? product.name : product.title%>" src="<%=!productionMode ? proLogo : ''%>" original="<%=productionMode ? proLogo : ''%>"/>
+</a>
+<span class="name"><a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank"><%= product.name ? product.name : product.title%></a></span>
+<div class="label">
+<!--<span class="red">直降</span>-->
+<!--<span class="blue">满减</span>-->
+<!--<span class="gray">赠品</span>-->
+</div>
+<span class="price <%= product.memberPrice > 9999 ? 'small' : ''%>">
+<%if(product.memberPrice > 0){%>
+<span>¥<span><%=splitMemberPrice[0]%></span>.<%=splitMemberPrice[1]%></span>
+<%}%>
+</span>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" pid="<%=product.id%>" class="but25 btn-buy">加入购物车</a>
+</li>
+<%}%>
+<%}%>
+</ul>
+<div class="pagination" id="pageList" total="<%=productList.total%>"></div>
+
+
+<%if(widget && widget.hot_sell && widget.hot_sell.length > 0){%>
+<div class="hot_offers">
+<div class="title" data-type="htmlSource" data-id="widget:hot_sell_title"><%=widget && widget.hot_sell_title ? widget.hot_sell_title : '热门推荐'%></div>
+<ul class="list" data-type="productGroup" data-id="widget:hot_sell" data-spec="180X180">
+<%for(var i=0;i< widget.hot_sell.length;i++){%>
+<%var product = widget.hot_sell[i],pid = (product.id).replace("p_","");%>
+<%var splitMemberPrice = (product.memberPrice + "").split(".");%>
+<li>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" class="img_view">
+<img src="<%=!productionMode ? product.imgUrl : ''%>" original="<%=productionMode ? product.imgUrl : ''%>" alt="<%=product.name%>"/>
+</a>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" title="<%=product.name%>"><span class="name"><%=product.name%></span></a>
+<span class="price <%= product.memberPrice > 9999 ? 'small' : ''%>">
+<span>¥<span><%=splitMemberPrice[0]%></span>.<%=splitMemberPrice.length > 1 ? splitMemberPrice[1] : '00'%></span>
+<%if(product.marketPrice > 0){%><s>¥<%=product.marketPrice%></s><%}%>
+</span>
+<a href="/product.jsp?id=<%=product.id%>&mid=<%=product.merchantId%>" target="_blank" pid="<%=product.id%>" class="but25 btn-buy">加入购物车</a>
+</li>
+<%}%>
+</ul>
+</div>
+<%}else if(!productionMode){%>
+<div class="hot_offers">
+<div class="title" data-type="htmlSource" data-id="widget:hot_sell_title"><%=widget && widget.hot_sell_title ? widget.hot_sell_title : '热门推荐'%></div>
+<ul class="list" data-type="productGroup" data-id="widget:hot_sell" data-spec="180X180">
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+<li>
+<a class="img_view">
+<img src="../res/img/p1.png" alt=""/>
+</a>
+<span class="name">百草味 坚果 炒货 手剥山核桃 </span>
+<span class="price">
+<span>¥<span>128</span>.00</span>
+</span>
+<a class="but25">加入购物车</a>
+</li>
+</ul>
+</div>
+<%}%>
+
+
+</div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="insight_log" style="display: none" pageName="商品列表" userId="<%=userId%>" m="<%=_m_%>" templateId="<%=_pageId_%>" appId="<%=_appId_%>" columnId="<%=columnId%>"></div>
+<%=#importUrl("/footer.html")%>
+</body>
+</html>

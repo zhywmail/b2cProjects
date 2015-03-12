@@ -1,0 +1,19 @@
+body {
+    text-align: center;
+    background: url(../images/layer.jpg);
+}
+#img1 {
+    position:absolute;
+    left:872px;
+    top:29px;
+}
+#floorDiv {
+    margin: 0 auto;
+    width: 62%;
+}
+#end {
+    margin:0 auto;
+    background-image: url(../images/end.jpg);
+    width:62%;
+    height: 200px;
+}

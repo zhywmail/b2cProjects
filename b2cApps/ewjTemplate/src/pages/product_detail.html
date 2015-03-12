@@ -1,0 +1,664 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+	<head>
+        <title><%=seo ? seo.seo_title : ''%></title>
+        <meta name="keywords" content="<%=seo ? seo.seo_keywords : ''%>"/>
+        <meta name="description" content="<%=seo ? seo.seo_description : ''%>"/>
+        <meta http-equiv="X-UA-Compatible" content="edge" />
+        <meta name="renderer" content="webkit"/>
+        <link rel="stylesheet" type="text/css" href="/resources/ewj/login/css/common.css" charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="/resources/ewj/login/css/common_custom.css" charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="../res/css/product_detail.css" />
+        <link rel="stylesheet" type="text/css" href="../res/css/product_detail_custom.css" />
+        <script src="/resources/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="../res/js/jquery.lazyloaded.js" type="text/javascript"></script>
+        <script src="/resources/jquery.SuperSlide.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <%=#importUrl("/header.html")%>
+        <img id="greyImg" src="../res/images/grey.gif" style="display: none;"/>
+        <div class="backededed">
+            <div class="center product">
+                <div class="crumb">
+                    <a href="/">首页</a><span class="arrow"></span>
+                    <%if(position && position.length > 0){%>
+                    <%for(var i=1;i< position.length;i++){%>
+                    <a href="/product_list.jsp?columnId=<%=position[i].id%>"><%=position[i].name%></a> <%if(i!=position.length-1){%><span class="arrow"></span><%}%>
+                    <%}%>
+                    <span class="arrow"></span>
+                    <%}%>
+                    <span class="active"><%=product.name%></span>
+                </div>
+                <div class="detail_meta">
+                    <div class="preview gallery">
+                        <div id="vertical" class="bigImg">
+                            <img src="<%= product.pics.normalPics.length > 0 ? product.pics.normalPics[0] : '/upload/nopic_300.jpg'%>" view-src="<%= product.pics.bigPics.length > 0 ? product.pics.bigPics[0] : '/upload/nopic_800.jpg'%>" alt="<%=product.htmlname%>" id="midimg" />
+                            <div style="display: none;" id="winSelector"></div>
+                            <div class="jia"></div>
+                        </div>
+                        <!--bigImg end-->
+                        <div class="smallImg">
+                            <div class="scrollbutton smallImgUp disabled ico">&#x2747;</div>
+                            <div id="imageMenu">
+                                <ul>
+                                    <%if(product && product.pics.smallPics.length > 0){%>
+                                    <%for(var i=0;i< product.pics.smallPics.length;i++){%>
+                                    <li <%if(i==0){%>id="onlickImg"<%}%>><img src="<%=product.pics.smallPics[i]%>" mid-src="<%=product.pics.normalPics[i]%>" view-src="<%=product.pics.bigPics[i]%>" alt="" /></li>
+                                    <%}%>
+                                    <%}%>
+                                </ul>
+                            </div>
+                            <div class="scrollbutton smallImgDown ico">&#x2714;</div>
+                        </div>
+                        <!--smallImg end-->
+                        <div id="bigView" style="display: none;">
+                            <img alt="" src="" />
+                        </div>
+
+                        <div class="share bdsharebuttonbox">
+                            <span class="title">分享商品信息：</span>
+                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                            <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                            <a href="#" class="bds_more" data-cmd="more"></a>
+                        </div>
+                    </div>
+
+                    <div class="detail_right">
+                        <span class="name"><%=product.name%></span>
+                        <span class="introduce"><%=product&&product.sellingPoint||""%></span>
+                        <div class="money">
+                            <%if(product.realPrice && product.realPrice.price && product.realPrice.price > 0){%>
+                            <% var splitMainProductMemberPrice = (product.realPrice.price + "").split(".");%>
+                            <%=product.realPrice.priceName ? product.realPrice.priceName : '价格'%><p class="textPrimary">
+                            ¥<strong><%=splitMainProductMemberPrice[0]%></strong>.<%=splitMainProductMemberPrice.length > 1 ? splitMainProductMemberPrice[1] : '00'%></p>
+                            <%}%>
+                            <%if(product.marketPrice && product.marketPrice >　0){%>
+                            <!--参考价-->
+                            <s class="cankao">¥ <%=product.marketPrice%></s>
+                            <%}%>
+                        </div>
+                        <%if(productRules && (productRules.coupon.length>0 || productRules.moreCoupon.length > 0||productRules.gift.length > 0||productRules.exchange.length > 0)){%>
+                        <%var saleCount = productRules.coupon.length + productRules.moreCoupon.length + productRules.gift.length + productRules.exchange.length;%>
+                        <div class="dt_lins <%=saleCount > 3 ? 'sale' : ''%>">
+                            <%if(saleCount > 3)%>
+                            <div class="toggleBtn saleToggle enableSelect"><span>展开</span><i></i></div>
+                            <%%>
+                            <span class="title">促销</span>
+                            <ul class="list" id="saleRuleList">
+                                <%if(productRules){%>
+                                <%var ruleCount = 0;%>
+                                <%if(productRules.coupon.length > 0){%>
+                                <%for(var i=0;i< productRules.coupon.length;i++){%>
+                                <li style="<%= ruleCount > 2 ? 'display:none;' : '' %>">
+                                    <span class="flag red">
+                                        <%if(productRules.coupon[i].type=="pdf"){%>
+                                        运费优惠
+                                        <%}else if(productRules.coupon[i].type=="php"){%>
+                                        送积分
+                                        <%}else if(productRules.coupon[i].type=="pds"){%>
+                                        满减
+                                        <%}else if(productRules.coupon[i].type=="pgc"){%>
+                                        送券
+                                        <%}else if(productRules.coupon[i].type=="pnds"){%>
+                                        第N件优惠
+                                        <%}else if(productRules.coupon[i].type=="ods"){%>
+                                        满减
+                                        <%}else if(productRules.coupon[i].type=="odf"){%>
+                                        运费优惠
+                                        <%}else if(productRules.coupon[i].type=="OGC"){%>
+                                        送券
+                                        <%}%>
+                                    </span>
+                                    <span><%=productRules.coupon[i].name%></span>
+                                </li>
+                                <%ruleCount++;%>
+                                <%}%>
+                                <%}%>
+
+                                <%if(productRules.moreCoupon.length > 0){%>
+                                <%for(var i=0;i< productRules.moreCoupon.length;i++){%>
+                                <li style="<%= ruleCount > 2 ? 'display:none;' : '' %>"><span class="flag red"><%if(productRules.moreCoupon[i].type == "puc" || productRules.moreCoupon[i].type == "OUC"){%>用券<%}%></span><span><%=productRules.moreCoupon[i].name%></span></li>
+                                <%ruleCount++;%>
+                                <%}%>
+                                <%}%>
+
+                                <%if(productRules.gift.length > 0){%>
+                                <%for(var i=0;i< productRules.gift.length;i++){%>
+                                <li style="<%= ruleCount > 2 ? 'display:none;' : '' %>">
+                                    <span class="flag red">赠品</span>
+                                    <!--<%=productRules.gift[i].tips ? productRules.gift[i].tips : productRules.gift[i].name%>-->
+                                    <%var presentProducts = productRules.gift[i].presentProducts;%>
+                                    <%if(presentProducts && presentProducts.length > 0){%>
+                                    <%for(var j=0;j < presentProducts.length;j++){%>
+                                    <%var presentProduct = presentProducts[j];%>
+                                    <span><a href="/product.jsp?id=<%=presentProduct.id%>&mid=<%=presentProduct.merchantId%>" class="good"><img src="<%=presentProduct.pic%>" alt="" width="25" height="25" title="<%=presentProduct.name%>"/></a><i>x&nbsp;<%=presentProduct.amount%></i></span>
+                                    <%}%>
+                                    <%}%>
+                                </li>
+                                <%ruleCount++;%>
+                                <%}%>
+                                <%}%>
+
+                                <%if(productRules.exchange.length > 0){%>
+                                <%for(var i=0;i< productRules.exchange.length;i++){%>
+                                <li style="<%= ruleCount > 2 ? 'display:none;' : '' %>">
+                                    <span class="flag red">换购</span>
+                                    <span><%=productRules.exchange[i].name%></span>
+                                </li>
+                                <%ruleCount++;%>
+                                <%}%>
+                                <%}%>
+
+
+                                <%}%>
+
+                            </ul>
+                        </div>
+                        <%}%>
+
+                        <!-- ko foreach:skuSelector.inventoryAttrs -->
+                        <!--ko if:standardValues().length>0 -->
+                        <div class="dt_lins norm" data-bind="visible:standardValues().length>0">
+                            <span class="title"><!-- ko text:name --><!-- /ko --></span>
+                            <div class="norm_list" data-bind="foreach:standardValues">
+                                <a  data-bind="css:{active:selected,enabled:!enabled()},click:function(data,event){$root.skuSelector.selectValue($data,$parent);},text:name" ></a>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- /ko -->
+
+                        <div class="dt_lins quantity">
+                            <span class="title">数量</span>
+                            <a class="less" data-bind="click:decrease"></a>
+                            <input class="quantity_txt" value="1" data-bind="value:buyAmount"/>
+                            <a class="add" data-bind="click:add"></a>
+                            <span class="kucun"><%if(isCanBeBuy){%><%=product.sellableCount > 0 ? '库存:' + product.sellableCount : '无库存'%><%}%></span>
+                            <span class="tips" id="error_tips">
+                                <!--您所选的商品数量大于库存!-->
+                            </span>
+                        </div>
+                        <!--
+                        <div class="dt_lins region">
+                            <span class="title">送至</span>
+                            <div class="region_list">
+                                <span class="title">
+                                    <span class="cnt">请选择地区</span>
+                                    <span class="ico">&#x2748;</span>
+                                </span>
+                                <div class="region_pop">
+                                    <ul class="region_pop_nav">
+                                        <li class="active">
+                                            <span class="tt">
+                                                广东
+                                                <span class="ico">&#x2748;</span>
+                                            </span>
+                                            <div class="line"></div>
+                                        </li>
+                                        <li>
+                                            <span class="tt">
+                                                深圳市
+                                                <span class="ico">&#x2748;</span>
+                                            </span>
+                                            <div class="line"></div>
+                                        </li>
+                                        <li>
+                                            <span class="tt">
+                                                南山区
+                                                <span class="ico">&#x2748;</span>
+                                            </span>
+                                            <div class="line"></div>
+                                        </li>
+                                    </ul>
+                                    <ul class="region_pop_nav_list">
+                                        <li class="active">
+                                            <a>上海</a>
+                                            <a>深圳</a>
+                                            <a>广州</a>
+                                            <a>北京</a>
+                                        </li>
+                                        <li>
+                                            <a>深圳市</a>
+                                            <a>罗湖区</a>
+                                        </li>
+                                        <li>
+                                            <a>南山区</a>
+                                            <a>罗湖区</a>
+                                            <a>福田区</a>
+                                            <a>宝安区</a>
+                                            <a>光明新区</a>
+                                            <a>坪山新区</a>
+                                            <a>大鹏新区</a>
+                                            <a>龙岗区</a>
+                                            <a>盐田区</a>
+                                            <a>龙华新区</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+
+                        <div class="dt_lins buyOperate pr">
+                            <%if(isCanBeBuy){%>
+                            <a class="btnAddToCart" data-bind="css:{enable:sellableCount() <= 0},click:add2Cart"><i class="ico">&#x2741;</i><span>加入购物车</span></a>
+                            <a class="but25 btnAddFavorite" pid="<%=product.objId%>"><i></i><span>收藏</span></a>
+                            <%}else{%>
+                            <h3>商品已售罄</h3>
+                            <%}%>
+                            <!-- add to cart panel -->
+                            <div class="messagePanel successPanel recommend1 addToCart"></div>
+                            <!-- end add to cart panel -->
+                            <!-- add to favorite panel -->
+                            <div class="messagePanel successPanel recommend2 addToFavorite" style="width: 350px;"></div>
+                            <!-- end add to favorite panel -->
+                        </div>
+
+                        <div class="dt_lins region">
+                            <img src="../res/images/service.png"/>
+                        </div>
+
+                        <%if(product && product.DynaAttrs && product.DynaAttrs["attr_product_notice"] && product.DynaAttrs["attr_product_notice"].value != ""){%>
+                        <div class="dt_lins tips">
+                            <span class="title">提示</span>
+                            <span style="color:#6f6f6f;float:left;">
+                                <%=product.DynaAttrs["attr_product_notice"].value%>
+                            </span>
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+
+
+
+
+                <div class="left">
+                    <%if(sameLevelColumns && sameLevelColumns.length > 0){%>
+                    <div class="nav_list">
+                        <span class="title2 active">相关分类</span>
+                        <div class="list active">
+                            <%for(var i=0;i< sameLevelColumns.length;i++){%>
+                            <%if(sameLevelColumns[i].id == "c_9000"){continue;}%>
+                            <a href="/product_list.jsp?columnId=<%=sameLevelColumns[i].id%>"><%=sameLevelColumns[i].title%></a>
+                            <%}%>
+                        </div>
+                    </div>
+                    <%}%>
+
+
+                    <%if(buyAlsoBuy && buyAlsoBuy.length > 0){%>
+                    <div class="best">
+                        <div class="title">买过该商品的人还买过</div>
+                        <ul class="list">
+                            <%for(var i=0;i< buyAlsoBuy.length;i++){%>
+                            <%var value = buyAlsoBuy[i],pid = (value.id).replace("p_","");%>
+                            <%var splitMemberPrice = (value.memberPrice + "").split(".");%>
+                            <li>
+                                <a href="/product.jsp?id=<%=value.id%>&mid=<%=value.merchantId%>" target="_blank" class="img_view">
+                                    <img original="<%= value.pics.length==0 ? '/upload/nopic_200.jpg' : value.pics[0] %>" alt="<%=value.name%>"/>
+                                </a>
+                                <a href="/product.jsp?id=<%=value.id%>&mid=<%=value.merchantId%>" target="_blank" title="<%=value.name%>"><span class="name"><%=value.name%></span></a>
+                                <span class="price <%=value.memberPrice > 9999 ? 'small' : ''%>">
+                                    <span>¥<span><%=splitMemberPrice[0]%></span>.<%=splitMemberPrice.length > 1 ? splitMemberPrice[1] : '00'%></span>
+                                </span>
+                                <a href="/product.jsp?id=<%=value.id%>&mid=<%=value.merchantId%>" target="_blank" pid="<%=value.id%>" class="but25 btn-buy">加入购物车</a>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </div>
+                    <%}%>
+                </div>
+                <div class="right">
+                    <%if((bomList&&bomList.length>0&&false) || (bestCommend&&bestCommend.length>0)){%>
+                    <div class="hot_offers combination">
+                        <div class="groupTabHd">
+                            <ul class="clearfix">
+                                <%if(bestCommend&&bestCommend.length>0){%><li class="active" style="border-right: 0 none;">套餐优惠</li><%}%>
+                                <!--<%if(bomList&&bomList.length>0){%><li class="last">促销组合</li><%}%>-->
+                            </ul>
+                        </div>
+                        <div class="groupTabBd clearfix">
+                            <%if(bestCommend&&bestCommend.length>0){%>
+                            <div class="item active">
+                                <div class="over">
+                                    <ul class="list">
+                                        <li>
+                                            <a href="/product.jsp?id=<%=product.objId%>&mid=<%=product.merchantId%>" class="img_view">
+                                                <img original="<%= product.pics.normalPics.length > 0 ? product.pics.normalPics[0] : '/upload/nopic_180.jpg'%>" alt="<%=product.name%>"/>
+                                            </a>
+                                            <a href="/product.jsp?id=<%=product.objId%>&mid=<%=product.merchantId%>" title="<%=product.name%>"><span class="name"><%=product.name%></span></a>
+                                            <input class="checkbox" data-checked="true" type="hidden" base="true" style="visibility: hidden;" memberPrice="<%=product.realPrice.price%>" marketPrice="<%=product.marketPrice%>" objId="<%=product.objId%>"/>
+                                            <label class="price">
+                                                <span>¥<span><%=splitMainProductMemberPrice ? splitMainProductMemberPrice[0] : ''%></span><%=splitMainProductMemberPrice && splitMainProductMemberPrice.length>1 && splitMainProductMemberPrice[1] != "" ? '.'+ splitMainProductMemberPrice[1] : '.00'%></span>
+                                            </label>
+                                        </li>
+                                        <%for(var i=0,bestLength=bestCommend.length;i < bestLength;i++){%>
+                                        <%var commendProduct = bestCommend[i];%>
+                                        <%if(commendProduct.sellableCount > 0){%>
+                                        <li memberPrice="<%=commendProduct.memberPrice%>" marketPrice="<%=commendProduct.marketPrice%>" objId="<%=commendProduct.id%>">
+                                            <a href="/product.jsp?id=<%=commendProduct.id%>&mid=<%=commendProduct.merchantId%>" target="_blank" class="img_view">
+                                                <img original="<%= commendProduct.pics.length > 0 ? commendProduct.pics[0] : '/upload/nopic_180.jpg'%>" alt="<%=commendProduct.name%>"/>
+                                            </a>
+                                            <a href="/product.jsp?id=<%=commendProduct.id%>&mid=<%=commendProduct.merchantId%>" target="_blank" title="<%=commendProduct.name%>"><span class="name"><%=commendProduct.name%></span></a>
+                                            <div class="checkbox float_l" data-checked="false" memberPrice="<%=commendProduct.memberPrice%>" marketPrice="<%=commendProduct.marketPrice%>" objId="<%=commendProduct.id%>">
+                                                <input type="hidden"/>
+                                                <i></i>
+                                            </div>
+
+                                            <label class="price">
+                                                <%var splitOtherMemberPrice = (commendProduct.memberPrice + "").split(".");%>
+                                                <span>¥<span><%=splitOtherMemberPrice[0]%></span><%=splitOtherMemberPrice.length>1 && splitOtherMemberPrice[1] != "" ? '.'+ splitOtherMemberPrice[1] : '.00'%></span>
+                                            </label>
+                                        </li>
+                                        <%}%>
+                                        <%}%>
+                                    </ul>
+                                </div>
+                                <div class="total">
+                                    <span class="name">已选择<span id="bestSelectedNum">1</span>个商品</span>
+                                        <span class="price <%=splitMainProductMemberPrice && splitMainProductMemberPrice[0].length > 4 ? 'small' : ''%>">
+                                            总价：<span id="bestTotalPrice">¥<span><%=splitMainProductMemberPrice ? splitMainProductMemberPrice[0] : ''%></span><%=splitMainProductMemberPrice &&splitMainProductMemberPrice.length>1 ? '.'+ splitMainProductMemberPrice[1] : '.00'%></span>
+                                            <span class="cankao">参考价：<s id="bestTotalMarketPrice">¥<%=product.marketPrice%></s></span>
+                                        </span>
+                                    <a href="javascript:;" class="bute14041" id="bestAddToCart">加入购物车</a>
+                                </div>
+                            </div>
+                            <%}%>
+                            <%if(bomList&&bomList.length>0){%>
+
+                            <%}%>
+                        </div>
+                    </div>
+                    <%}%>
+
+                    <div class="detail_cont">
+                        <div class="nav" id="detailTab">
+                            <a class="active" targetId="description">商品介绍</a>
+                            <a targetId="model">规格及包装</a>
+                            <a targetId="service">售后服务</a>
+                            <a targetId="comment">评价（<%=appraiseList.totalCount || 0%>）</a>
+                            <a targetId="consult">商品问答</a>
+                        </div>
+                        <div class="clear"></div>
+
+                        <!-- tab content -->
+                        <div class="tabContent">
+                            <!-- 商品介绍 -->
+                            <div class="tabItem" id="description" style="display: block;">
+                                <div id="center_html" class="center_html">
+                                    <%=#product.content%>
+                                </div>
+
+                                <!--<a class="more">展开更多...</a>-->
+                            </div>
+                            <!-- end 商品介绍 -->
+
+                            <!-- 规格与包装-->
+                            <div class="tabItem" id="model">
+                                <div class="modelTableWrap">
+                                    <table class="modelTable" width="870">
+                                        <%if(product && product.displayAttrs&&product.displayAttrs.length>0){%>
+                                        <%var displayAttrs = product.displayAttrs,length=product.displayAttrs.length;%>
+                                        <%for(var i=0;i< length;i++){%>
+                                        <tr>
+                                            <td class="title" width="130"><p><%=displayAttrs[i].name%>：</p></td>
+                                            <td class="desc"><%=displayAttrs[i].value%></td>
+                                        </tr>
+                                        <%}%>
+                                        <%}%>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- end 规格与包装-->
+
+                            <!-- 售后服务 -->
+                            <div class="tabItem service" id="service" style="background-color: #fff;">
+                                <%if(infoCommend && infoCommend.length > 0){%>
+                                    <%=#infoCommend[0].content%>
+                                <%}%>
+                            </div>
+                            <!-- end 售后服务 -->
+
+                            <!-- comment -->
+                            <div class="tabItem comment" id="comment" style="display: block;">
+
+                                <div class="appraisal">
+                                    <span class="title">
+                                        累计评价 <span><%=appraiseList.totalCount || 0%></span>
+                                        <span style="float: right; display: block;">
+                                            <a style="color: #333; margin-right: 10px; background-color: #f2f2f2; display: block; height: 25px; line-height: 25px; font-size: 12px; text-indent: 0px; padding: 0px 10px; margin-top: 7px;" href="/member/index.jsp">评价商品</a>
+                                        </span>
+                                    </span>
+                                    <ul class="list">
+                                        <%if(appraiseList.totalCount > 0){%>
+                                        <%for(var i=0,length=appraiseList.recordList.length;i< length;i++){%>
+                                        <%var appraise = appraiseList.recordList[i];%>
+                                        <li>
+                                        <span class="name">
+                                            <a href=""><%=appraise.createUserName%></a><%if(appraise.isAnonymity){%><span class="starts">（匿名）</span><%}%>
+                                            <!--<br>-->
+                                            <!--<img src="assets/images/rating.jpg">-->
+                                            <!--<img src="assets/images/rating.jpg">-->
+                                            <!--<img src="assets/images/rating.jpg">-->
+                                        </span>
+                                        <div class="right">
+                                            <span class="aps_one">
+                                                <%=appraise.comment%>
+                                                <span class="time"><%=appraise.createTime%></span>
+                                            </span>
+                                            <!--<ul class="find_list">-->
+                                                <!--<li>-->
+                                                <!--<span class="name">-->
+                                                    <!--<a href="">t***5</a>-->
+                                                    <!--<span class="starts">（匿名）</span>-->
+                                                <!--</span>-->
+                                                <!--<span class="repy">-->
+                                                    <!--不错，打算在买点-->
+                                                <!--</span>-->
+                                                <!--</li>-->
+                                                <!--<li>-->
+                                                <!--<span class="name">-->
+                                                    <!--<a href="">澜***w</a>-->
+                                                    <!--<span class="starts">（匿名）</span>-->
+                                                <!--</span>-->
+                                                <!--<span class="repy">-->
+                                                    <!--有籽，分量足，个头稍小-->
+                                                <!--</span>-->
+                                                <!--</li>-->
+                                            <!--</ul>-->
+                                            <div class="tip_hf">
+                                                <!--<img src="assets/images/din.png">&nbsp;(0)&nbsp;&nbsp;&nbsp;-->
+                                                <!--<img src="assets/images/hf.png">&nbsp;(0)-->
+                                            </div>
+                                        </div>
+                                        </li>
+                                        <%}%>
+                                        <%}%>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                    <!-- pagination-->
+                                    <!--<div class="pagination">-->
+                                        <!--<p class="paginationTotal">-->
+                                            <!--共&nbsp;<span>984</span>&nbsp;件商品-->
+                                        <!--</p>-->
+                                        <!--<ul>-->
+                                            <!--<li><a href="">上一页</a></li>-->
+                                            <!--<li><a href="">1</a></li>-->
+                                            <!--<li><a href="">2</a></li>-->
+                                            <!--<li><a href="">3</a></li>-->
+                                            <!--<li><a href="">4</a></li>-->
+                                            <!--<li><a href="">5</a></li>-->
+                                            <!--<li><a href="">6</a></li>-->
+                                            <!--<li>...</li>-->
+                                            <!--<li><a href="">12</a></li>-->
+                                            <!--<li><a href="">下一页</a></li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                    <!-- end pagination-->
+                                </div>
+
+                            </div>
+                            <!-- end comment -->
+
+                            <!-- consult -->
+                            <div class="tabItem consult" id="consult" style="display: block;">
+                                <%if(messageList.totalCount > 0){%>
+                                <div class="consultContent">
+                                    <!-- comment 商品问答 -->
+                                    <div class="commentMod">
+                                        <%for(var i=0,length=messageList.recordList.length;i< length;i++){%>
+                                        <%var message = messageList.recordList[i];%>
+                                        <div class="item clearfix">
+                                            <div class="user">
+                                                <a class="thumb show" href=""><img original="<%=message.createUserLogo||'upload/user_none_60.gif'%>" alt="" width="78" height="78"/></a>
+                                                <a class="name show" href=""><%=message.createUserName%><!--<span>（匿名）</span>--></a>
+                                                <p class="rank show"><!--<img src="assets/images/rating.jpg" alt="" width="11" height="9"/><img src="assets/images/rating.jpg" alt="" width="11" height="9"/><img src="assets/images/rating.jpg" alt="" width="11" height="9"/>--></p>
+                                            </div>
+                                            <div class="article">
+                                                <div class="postDate">商品咨询：<span><%=message.createTime%></span></div>
+                                                <p class="para"><%=message.content%></p>
+                                                <!--<div class="reply">-->
+                                                    <!--<div class="replyHd">e万家回复：</div>-->
+                                                    <!--<div class="replyBd">-->
+                                                        <!--<p>甜虾肉质很好，肉够饱满，90%头部带籽，稍许腹部带籽，虾籽也满满。黑头占20%左右，不影响食用， 吃了两袋只有5个坏掉的。会再</p>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="replyDate">2014-08-12  18:45</div>-->
+                                            </div>
+                                        </div>
+                                        <%}%>
+                                    </div>
+                                    <!-- end comment 商品问答 -->
+
+                                    <!-- pagination-->
+                                    <!--<div class="pagination">-->
+                                        <!--<p class="paginationTotal">-->
+                                            <!--共&nbsp;<span>984</span>&nbsp;件商品-->
+                                        <!--</p>-->
+                                        <!--<ul>-->
+                                            <!--<li><a href="">上一页</a></li>-->
+                                            <!--<li><a href="">1</a></li>-->
+                                            <!--<li class="active"><a href="">2</a></li>-->
+                                            <!--<li><a href="">3</a></li>-->
+                                            <!--<li><a href="">4</a></li>-->
+                                            <!--<li><a href="">5</a></li>-->
+                                            <!--<li><a href="">6</a></li>-->
+                                            <!--<li>...</li>-->
+                                            <!--<li><a href="">12</a></li>-->
+                                            <!--<li><a href="">下一页</a></li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                    <!-- end pagination-->
+                                </div>
+                                <%}%>
+                            </div>
+                            <!-- end consult -->
+                        </div>
+                        <!-- end tab content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="insight_log" style="display: none" pageName="商品详细" userId="<%=userId%>" m="<%=merchantId%>" templateId="<%=_pageId_%>" appId="<%=_appId_%>" productId="<%=productId%>"></div>
+        <%=#importUrl("/footer.html")%>
+
+
+        <script type="text/html" id="add2CartMsgTemplate">
+            <div class="messagePanelHd">提示 <i class="closeBtn"></i></div>
+            <div class="messagePanelBd">
+                <div class="hd">
+                    <div class="clearfix mt5">
+                        <img height="36" width="37" alt="" src="../res/images/iconPass.png" class="fl mt10">
+                        <div class="fl ml15">
+                            <h2 class="title fn">已经成功加入购物车!</h2>
+                            <p class="total">购物车内共计{{productAmount}}件商品，合计&nbsp;<span>¥{{formatTotalProductPrice}}</span>&nbsp;元</p>
+                        </div>
+                    </div>
+                    <div class="clearfix btnWrap">
+                        <a class="btn default closeBtn" href="javascript:;">继续购物</a>
+                        <a class="btn primary" href="/cart.html">去购物车结算&nbsp;&gt;</a>
+                    </div>
+                </div>
+                <div class="bd" style="display: none;">
+
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="panelBuyAlsoBuyTemplate">
+            <div class="buyRecommend">
+                <div class="buyRecommendHd clearfix">
+                    <a href="" class="fr"><!--推荐更多&gt;&gt;--></a>
+                    <p class="fl">购买该商品的用户还购买了</p>
+                </div>
+                <div class="buyRecommendBd">
+                    <div class="slide">
+                        <div class="slide-hd">
+                            <i class="prev"></i>
+                            <i class="next"></i>
+                        </div>
+                        <div class="slide-bd">
+                            <div class="list">
+                                <ul class="listWrap clearfix">
+                                    {{each buyAlsoBuy as product}}
+                                    <li class="fl">
+                                        <a class="thumb show" href="/product.jsp?id={{product.id}}&mid={{product.merchantId}}" target="_blank"><img src="{{product.pics.length==0 ? '/upload/nopic_100.gif' : product.pics[0]}}" alt="{{product.name}}"/></a>
+                                        <a class="name show f12" href="/product.jsp?id={{product.id}}&mid={{product.merchantId}}" target="_blank">{{product.name}}</a>
+                                        <p class="textPrimary">
+                                            ¥<strong>{{product.splitMemberPrice[0]}}</strong>.{{product.splitMemberPrice[1]}}
+                                        </p>
+
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="addFavorMsgTemplate">
+            <div class="messagePanelHd">提示 <i class="closeBtn"></i></div>
+            <div class="messagePanelBd">
+                <div class="hd" style="border-bottom: 0 none;">
+                    <div class="clearfix mt5">
+                        <span class="fl mt10 passIcon" {{if !state}}style="background:none;"{{/if}}></span>
+                        <div class="fl ml15">
+                            <h2 class="title fn" {{if !state}}style="color:#e14041;"{{/if}}>{{msgContent}}</h2>
+                            <p class="total">您已经收藏了{{totalCount}}件商品。</p>
+                        </div>
+                    </div>
+                    <div class="clearfix btnWrap">
+                        <a class="btn default" href="/member/favor_list.jsp?type=product" rel="nofollow">我的收藏</a>
+                        <!--<a class="btn primary" href="">去购物车结算&nbsp;&gt;</a>-->
+                    </div>
+                </div>
+            </div>
+        </script>
+
+
+
+        <script>
+            var skus = <%=#skus%>;
+            var inventoryAttrs = <%=#inventoryAttrs%>;
+            var rappId = "<%=rappId%>";
+            var productId = "<%=productId%>";
+            var userId = "<%=userId%>";
+            var merchantId = "<%=merchantId%>";
+            var limitCount = "<%=product.realPrice.limitCount%>";
+            var sellableCount = "<%=product.sellableCount%>";
+        </script>
+        <script src="/resources/knockout-3.0.0.js" type="text/javascript"></script>
+        <script src="/resources/ko/attrs.js" type="text/javascript"></script>
+        <script src="../res/js/artTemplate.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../res/js/SkuSelector.js"></script>
+        <script type="text/javascript" src="../res/js/product_detail.js"></script>
+        <!--<script src="../res/js/appraisePage.js" type="text/javascript"></script>-->
+        <!--<script src="../res/js/detail.js" type="text/javascript"></script>-->
+
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </body>
+</html>

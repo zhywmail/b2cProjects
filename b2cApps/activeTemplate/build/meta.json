@@ -1,0 +1,21 @@
+{
+    "context":"activeTemplate",
+    "appEditor":{"enabled":true},
+    "renderEngine":"artTemplate",
+    "pages" : [
+        {"url":"/activeTemplate.jsp","name":"促销活动模板","pageId":"activeTemplate","template":"pages/activeTemplate.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"}
+    ],
+    "templates" : [
+        {"template":"pages/activeTemplate.html","name":"促销活动模板","description":"页面","dataProcessor":"@pages/index_process.jsx"}
+    ],
+    "rules":[{
+        "id":"fullControl",
+        "name":"完全控制",
+        "pattern":".*"
+    },{
+        "id":"readOnly",
+        "name":"查看权限",
+        "pattern":"(pages/viewAppPrivilege/.*)|(pages/viewUserPrivilege/.*)|(pages/home.jsx)"
+    }]
+
+}

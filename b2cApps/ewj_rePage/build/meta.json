@@ -1,0 +1,21 @@
+{
+    "context":"ewj_rePage",
+    "appEditor":{"enabled":true},
+    "renderEngine":"artTemplate",
+    "pages" : [
+        {"url":"/ewj_re.jsp","name":"买手推荐第一期","pageId":"ewj_re","template":"pages/ewj_re.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"}
+    ],
+    "templates" : [
+        {"template":"pages/ewj_re.html","name":"买手推荐第一期","description":"页面","dataProcessor":"@pages/index_process.jsx"}
+    ],
+    "rules":[{
+        "id":"fullControl",
+        "name":"完全控制",
+        "pattern":".*"
+    },{
+        "id":"readOnly",
+        "name":"查看权限",
+        "pattern":"(pages/viewAppPrivilege/.*)|(pages/viewUserPrivilege/.*)|(pages/home.jsx)"
+    }]
+
+}

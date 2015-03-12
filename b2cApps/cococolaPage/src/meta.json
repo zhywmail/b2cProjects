@@ -1,0 +1,21 @@
+{
+    "context":"cococolaPage",
+    "appEditor":{"enabled":true},
+    "renderEngine":"artTemplate",
+    "pages" : [
+        {"url":"/cococola.jsp","name":"可口可乐","pageId":"cococola","template":"pages/cococola.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"}
+    ],
+    "templates" : [
+        {"template":"pages/cococola.html","name":"可口可乐","description":"页面","dataProcessor":"@pages/index_process.jsx"}
+    ],
+    "rules":[{
+        "id":"fullControl",
+        "name":"完全控制",
+        "pattern":".*"
+    },{
+        "id":"readOnly",
+        "name":"查看权限",
+        "pattern":"(pages/viewAppPrivilege/.*)|(pages/viewUserPrivilege/.*)|(pages/home.jsx)"
+    }]
+
+}

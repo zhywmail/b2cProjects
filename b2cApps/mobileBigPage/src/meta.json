@@ -1,0 +1,25 @@
+{
+    "context":"mobileBigPage",
+    "appEditor":{"enabled":true},
+    "renderEngine":"artTemplate",
+    "pages" : [
+        {"url":"/bigBang.jsp","name":"巨无霸爆款","pageId":"bigBang","template":"pages/bigBang.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"},
+        {"url":"/newGoods.jsp","name":"新品来袭","pageId":"newGoods","template":"pages/newGoods.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"},
+        {"url":"/newYearBuy.jsp","name":"新品必buy","pageId":"newYearBuy","template":"pages/newYearBuy.html","dataProcessor":"@pages/index_process.jsx","dependsOn":"header"}
+    ],
+    "templates" : [
+        {"template":"pages/bigBang.html","name":"巨无霸爆款","description":"页面","dataProcessor":"@pages/index_process.jsx"},
+        {"template":"pages/newGoods.html","name":"新品来袭","description":"页面","dataProcessor":"@pages/index_process.jsx"},
+        {"template":"pages/newYearBuy.html","name":"新品必buy","description":"页面","dataProcessor":"@pages/index_process.jsx"}
+    ],
+    "rules":[{
+        "id":"fullControl",
+        "name":"完全控制",
+        "pattern":".*"
+    },{
+        "id":"readOnly",
+        "name":"查看权限",
+        "pattern":"(pages/viewAppPrivilege/.*)|(pages/viewUserPrivilege/.*)|(pages/home.jsx)"
+    }]
+
+}

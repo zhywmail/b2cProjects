@@ -1,0 +1,656 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>一日三餐</title>
+<link href="../res/style/header.css" rel="stylesheet">
+<link href="../res/style/threeMeals.css" rel="stylesheet">
+</head>
+
+<body>
+
+<%=#importUrl("/header.html")%>
+
+<!--轮换广告-->
+<div class="slide_banner">
+    <div class="slide_wrap">
+        <ul class="slide_adv">
+            <%if(slide_adv && slide_adv.imgUrl){%>
+            <%var imgurl=slide_adv.imgUrl%>
+            <li style="background-image:url(imgurl); display:block; ">
+                <div class="m_wbox slide_main">
+                    <a href="<%=slide_adv.imgLinkTo%>" class="slide_link" data-type="imgLink" data-id="slide_adv"></a>
+                </div>
+            </li>
+            <%}else{%>
+          <li style="background-image:url(../res/case/banner.jpg); display:block; ">
+             <div class="m_wbox slide_main">
+                <a href="#" class="slide_link"></a>
+             </div>
+          </li>
+            <%}%>
+        </ul>
+        
+        <div class="slide_box">
+           
+          <div class="slide_cate">
+              <div class="s_item">
+                  <h3 data-type="textLink" data-id="s_item1">
+                  <%if(s_item1 && s_item1.content){%>
+                  <a href="<%=s_item1.linkTo%>"><%=s_item1.content%></a>
+                  <%}else{%>
+                  <a href="#">营养早餐</a>
+                  <%}%>
+                  </h3>
+                  <p class="col" data-type="textLinkList" data-id="col1">
+                      <%if(col1 && col1.length>0){%>
+                        <%for(var i=0; i< col1.length;i++){%>
+                        <%value= col1[i];%>
+                        <a href="<%=value.linkTo%>"><%=value.content%></a>
+                        <%}%>
+                      <%}else{%>
+                      <a href="#">牛奶</a><a href="#">奶粉</a><a href="#">面食</a><a href="#">点心</a><a href="#">麦片</a><a href="#">冲调饮品</a><a href="#">鲜乳果汁</a>
+                      <%}%>
+                  </p>
+              </div>
+              <div class="s_item">
+                  <h3 data-type="textLink" data-id="s_item2">
+                  <%if(s_item2 && s_item2.content){%>
+                  <a href="<%=s_item2.linkTo%>"><%=s_item2.content%></a>
+                  <%}else{%>
+                  <a href="#">美味午晚餐</a>
+                  <%}%>
+                  </h3>
+                  <p class="col" data-type="textLinkList" data-id="col2">
+                      <%if(col2 && col2.length>0){%>
+                      <%for(var i=0; i< col2.length;i++){%>
+                      <%value= col2[i];%>
+                      <a href="<%=value.linkTo%>"><%=value.content%></a>
+                      <%}%>
+                      <%}else{%>
+                      <a href="#">蔬菜</a><a href="#">奶肉类粉</a><a href="#">鸡蛋</a><a href="#">大米</a><a href="#">食用油</a><a href="#">五谷杂粮</a><a href="#">腊肠</a>
+                      <%}%>
+                  <a href="#">海鲜干货</a><a href="#">香菇</a><a href="#">木耳</a><a href="#">厨房调料</a><a href="#">罐头</a><a href="#">汤料</a>
+                  </p>
+              </div>
+              <div class="s_item">
+                  <h3  data-type="textLink" data-id="s_item3">
+                  <%if(s_item3 && s_item3.content){%>
+                  <a href="<%=s_item3.linkTo%>"><%=s_item3.content%></a>
+                  <%}else{%>
+                  <a href="#">终极吃货</a>
+                  <%}%>
+                  </h3>
+                  <p class="col" data-type="textLinkList" data-id="col3">
+                      <%if(col3 && col3.length>0){%>
+                      <%for(var i=0; i< col3.length;i++){%>
+                      <%value= col3[i];%>
+                      <a href="<%=value.linkTo%>"><%=value.content%></a>
+                      <%}%>
+                      <%}else{%>
+                      <a href="#">海鲜品鉴</a><a href="#">打边炉</a><a href="#">BBQ</a>
+                      <%}%>
+                  </p>
+              </div>   
+
+              <div class="s_item last">
+                  <h3  data-type="textLink" data-id="s_item4">
+                  <%if(s_item4 && s_item4.content){%>
+                  <a href="<%=s_item4.linkTo%>"><%=s_item4.content%></a>
+                  <%}else{%>
+                  <a href="#">三餐之间</a>
+                  <%}%>
+                  </h3>
+                  <p class="col" data-type="textLinkList" data-id="col4">
+                      <%if(col4 && col4.length>0){%>
+                      <%for(var i=0; i< col4.length;i++){%>
+                      <%value= col4[i];%>
+                      <a href="<%=value.linkTo%>"><%=value.content%></a>
+                      <%}%>
+                      <%}else{%>
+                      <a href="#">葡萄酒</a><a href="#">啤酒</a><a href="#">洋酒</a><a href="#">白酒</a><a href="#">果汁</a><a href="#">水</a><a href="#">饮料</a>
+                  <a href="#">凉茶</a><a href="#">功能饮料</a><a href="#">咖啡</a><a href="#">碳酸饮料</a>
+                      <%}%>
+                  </p>
+              </div>
+          </div>         
+          
+          <!--右侧-->
+          <div class="fr_commend" data-type="imgLink" data-id="fr_commend">
+              <a href="<%= (fr_commend && fr_commend.imgLinkTo ? fr_commend.imgLinkTo : '#') %>">
+             <%if(fr_commend && fr_commend.imgUrl){%>
+             <div><img src="<%=fr_commend.imgUrl%>" width="260" height="350" /></div>
+             <%}else{%>
+             <div><img src="../res/case/side_commend.jpg" width="260" height="350" /></div>
+             <%}%>
+              </a>
+          </div>
+          <!--end 右侧--> 
+      </div>
+  </div> 
+</div>
+<!-- end 轮换广告-->
+
+<!-- 今周营养搭配-->
+<div class=" m_wbox comb_commend">
+    <h2>今周营养搭配</h2>
+    <div class="mc">
+        <div class="tabmenu" data-id="groupOn_tabs" data-type="tabs">
+            <a href="javascript:;" tab-target="groupOn_tab1" class="cur">Morning闪电侠</a>
+            <a href="javascript:;">温馨家常</a>
+            <a href="javascript:;">零食组合</a>
+        </div>
+        <div class="tabcon">
+            <div id="groupOn_tab1" class="comb_cont">
+                <div class="bigpic" data-type="imgLink" data-id="bigpic1" imgsize="370X275">
+                    <%if(bigpic1 && bigpic1.imgUrl){%>
+                    <img src="<%=bigpic1.imgUrl%>" width="370" height="275" />
+                    <%}else{%>
+                    <img src="../res/case/370x275.jpg" width="370" height="275" />
+                    <%}%>
+                </div>
+                <div class="desc">
+                    <div class="con1">
+                        <ul>
+                            <li>
+                                <p class="title" data-type="htmlSource" data-id="context1"><%if(context1 && context1.content){%><%=context1%><%}else{%>冬日滋养 炖鸡汤<br /><span>20千克</span></p><%}%>
+                                <p class="title" data-type="htmlSource" data-id="context2"><%if(context2 && context2.content){%><%=context2%><%}else{%>胡萝卜  走地鸡   芋头</p><%}%>
+                            </li>
+                            <li>
+                                <p class="price" data-type="htmlSource" data-id="context3"><%if(context3 && context3.content){%><%=context3%><%}else{%>套餐价：<b>&yen;190.00 </b></p><%}%>
+                                <p class="disc" data-type="htmlSource" data-id="context4"><%if(context4 && context4.content){%><%=context4%><%}else{%>价格：<del>&yen;200.00</del> 立省&yen;10</p><%}%>
+                                <p class="btn" data-type="textLink" data-id="context5"><a href="<%if(context5 && context5.content){%><%=context5.linkTo%><%}else{%>#<%}%>"><%if(context3 && context3.content){%><%=context3.content%><%}else{%>组合购买</a></p><%}%>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="con2">
+                        <h3 data-type="htmlSource" data-id="con121">
+                            <%if(con121 && con121.content){%>
+                            <%=con121%>
+                            <%}else{%>
+                            营养搭配推荐：
+                            <%}%>
+                        </h3>
+                        <p data-type="htmlSource" data-id="con122">
+                            <%if(con122 && con122.content){%>
+                            <%=con122%>
+                            <%}else{%>
+                            将胡萝卜切片，鸡肉切片用湿淀粉挂糊，将鸡片放入油锅中熘一下，然后倒入胡萝卜片同炒，八分熟时加入盐、鸡精调味即可。
+                            <%}%>
+                        </p>
+                        <p data-type="htmlSource" data-id="con123">
+                            <%if(con123 && con123.content){%>
+                            <%=con123%>
+                            <%}else{%>
+                            胡萝卜具有对抗癌症的功能，还能增强免疫力，提高眼睛视力。每日摄取1/2杯胡萝卜汁是最理想的分量。
+                            <%}%>
+                        </p>
+                    </div>
+                </div>
+                <div class="smallpic">
+                    <a href="#" class="prev"></a>
+                    <a href="#" class="next"></a>
+                    <div class="scroll" data-type="productGroup" data-id="scroll">
+                        <%if(scroll && scroll.length>0){%>
+                        <%for(var i=0;i< scroll.length;i++){%>
+                        <%var value1 = scroll[i];%>
+                        <%i++;%>
+                        <ul>
+                            <li><a href="/product.jsp?id=<%=value1.id%>" target="_blank"><img src="<%=value1.imgUrl%>" width="130" height="130"  alt="<%=value1.name%>" /></a></li>
+                            <%if(i< scroll.length){%>
+                            <%var value2 = scroll[i];%>
+                            <li><a href="/product.jsp?id=<%=value2.id%>" target="_blank"><img src="<%=value2.imgUrl%>" width="130" height="130"  alt="<%=value2.name%>" /></a></li>
+                            <%}%>
+                        </ul>
+                        <%}%>
+                        <%}else{%>
+                        <ul>
+                            <li class="cur"><a href="#"><img src="../res/case/130x130.jpg" width="130" height="130" /></a></li>
+                            <li><a href="#"><img src="../res/case/130x130_3.jpg" width="130" height="130" /></a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#"><img src="../res/case/130x130_2.jpg" width="130" height="130" /></a></li>
+                            <li><a href="#"><img src="../res/case/130x130_4.jpg" width="130" height="130" /></a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#"><img src="../res/case/130x130_2.jpg" width="130" height="130" /></a></li>
+                            <li><a href="#"><img src="../res/case/130x130_4.jpg" width="130" height="130" /></a></li>
+                        </ul>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end 今周营养搭配-->
+
+<!-- 1f-->
+<div class=" m_wbox meals_floor">
+   <div class="mt">
+       <a href="<%if(mt1f1 && mt1f1.content){%><%=mt1f1.linkTo%><%}else{%>#<%}%>" data-type="textLink" data-id="mt1f1">
+           <%if(mt1f1 && mt1f1.content){%>
+           <%=mt1f1.content%>
+           <%}else{%>
+           更多选择
+           <%}%>
+       </a>
+       <a href="<%if(mt1f2 && mt1f2.content){%><%=mt1f2.linkTo%><%}else{%>#<%}%>" class="mta" data-type="textLink" data-id="mt1f2">
+           <%if(mt1f2 && mt1f2.content){%>
+           <b>1F</b><%=mt1f2.content%>
+           <%}else{%>
+           <b>1F</b>营养早餐
+           <%}%>
+       </a>
+   </div>
+   <div class="mc" data-type="productGroup" data-id="mc1f">
+      <ul>
+          <%if(mc1f && mc1f.length>0){%>
+          <%for(var i=0;i< mc1f.length;i++){%>
+          <%var value = mc1f[i];%>
+          <li>
+              <div class="pic"><a href="/product.jsp?id=<%=value.id%>" target="_blank"><img src="<%=value.imgUrl%>"  width="230" height="230" alt="<%=value.name%>" /></a></div>
+              <div class="title"><a href="/product.jsp?id=<%=value.id%>" target="_blank"><%=value.name%></a></div>
+              <div class="title">250g</div>
+              <div class="disc">每天空运深圳  新鲜速冻</div>
+              <div class="price">现价：<%=value.memberPriceString%></div>
+          </li>
+          <%}%>
+          <%}else{%>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <%}%>
+      </ul>
+   </div>
+</div>
+<!-- end 1f-->
+
+<!-- 2f-->
+<div class=" m_wbox meals_floor">
+   <div class="mt">
+       <a href="<%if(mt2f1 && mt2f1.content){%><%=mt2f1.linkTo%><%}else{%>#<%}%>" data-type="textLink" data-id="mt2f1">
+           <%if(mt2f1 && mt2f1.content){%>
+           <%=mt2f1.content%>
+           <%}else{%>
+           更多选择
+           <%}%>
+       </a>
+       <a href="<%if(mt2f2 && mt2f2.content){%><%=mt2f2.linkTo%><%}else{%>#<%}%>" class="mta" data-type="textLink" data-id="mt2f2">
+           <%if(mt2f2 && mt2f2.content){%>
+           <b>2F</b><%=mt2f2.content%>
+           <%}else{%>
+           <b>2F</b>美味午晚餐
+           <%}%>
+       </a>
+   </div>
+   <div class="mc" data-type="productGroup" data-id="mc2f">
+      <ul>
+          <%if(mc2f && mc2f.length>0){%>
+          <%for(var i=0;i< mc2f.length;i++){%>
+          <%var value = mc2f[i];%>
+          <li>
+              <div class="pic"><a href="/product.jsp?id=<%=value.id%>" target="_blank"><img src="<%=value.imgUrl%>"  width="230" height="230" alt="<%=value.name%>" /></a></div>
+              <div class="title"><a href="/product.jsp?id=<%=value.id%>"><%=value.name%></a></div>
+              <div class="title">250g</div>
+              <div class="disc">每天空运深圳  新鲜速冻</div>
+              <div class="price">现价：<%=value.memberPriceString%></div>
+          </li>
+          <%}%>
+          <%}else{%>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <%}%>
+      </ul>
+   </div>
+</div>
+<!-- end 2f-->
+
+<!-- 3f-->
+<div class=" m_wbox meals_floor">
+   <div class="mt">
+       <a href="<%if(mt3f1 && mt3f1.content){%><%=mt3f1.linkTo%><%}else{%>#<%}%>" data-type="textLink" data-id="mt3f1">
+           <%if(mt3f1 && mt3f1.content){%>
+           <%=mt3f1.content%>
+           <%}else{%>
+           更多选择
+           <%}%>
+       </a>
+       <a href="<%if(mt3f2 && mt3f2.content){%><%=mt3f2.linkTo%><%}else{%>#<%}%>" class="mta" data-type="textLink" data-id="mt3f2">
+           <%if(mt3f2 && mt3f2.content){%>
+           <b>3F</b><%=mt3f2.content%>
+           <%}else{%>
+           <b>3F</b>终极吃货
+           <%}%>
+       </a>
+   </div>
+   <div class="mc" data-type="productGroup" data-id="mc3f">
+      <ul>
+          <%if(mc3f && mc3f.length>0){%>
+          <%for(var i=0;i< mc3f.length;i++){%>
+          <%var value = mc3f[i];%>
+          <li>
+              <div class="pic"><a href="/product.jsp?id=<%=value.id%>" target="_blank"><img src="<%=value.imgUrl%>"  width="230" height="230" alt="<%=value.name%>" /></a></div>
+              <div class="title"><a href="/product.jsp?id=<%=value.id%>"><%=value.name%></a></div>
+              <div class="title">250g</div>
+              <div class="disc">每天空运深圳  新鲜速冻</div>
+              <div class="price">现价：<%=value.memberPriceString%></div>
+          </li>
+          <%}%>
+          <%}else{%>
+         <li>
+           <div class="adv"><a href="#"><img src="../res/case/adv230x320.jpg" width="230" height="320" /></a></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="adv"><a href="#"><img src="../res/case/adv230x320_2.jpg" width="230" height="320" /></a></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <%}%>
+      </ul>
+   </div>
+</div>
+<!-- end 3f-->
+
+<!-- 4f-->
+<div class=" m_wbox meals_floor">
+   <div class="mt">
+       <a href="<%if(mt4f1 && mt4f1.content){%><%=mt4f1.linkTo%><%}else{%>#<%}%>" data-type="textLink" data-id="mt4f1">
+           <%if(mt4f1 && mt4f1.content){%>
+           <%=mt4f1.content%>
+           <%}else{%>
+           更多选择
+           <%}%>
+       </a>
+       <a href="<%if(mt4f2 && mt4f2.content){%><%=mt4f2.linkTo%><%}else{%>#<%}%>" class="mta" data-type="textLink" data-id="mt4f2">
+           <%if(mt4f2 && mt4f2.content){%>
+           <b>4F</b><%=mt4f2.content%>
+           <%}else{%>
+           <b>4F</b>三餐之间
+           <%}%>
+       </a>
+   </div>
+   <div class="mc" data-type="productGroup" data-id="mc4f">
+      <ul>
+          <%if(mc4f && mc4f.length>0){%>
+          <%for(var i=0;i< mc4f.length;i++){%>
+          <%var value = mc4f[i];%>
+         <li>
+             <div class="pic"><a href="/product.jsp?id=<%=value.id%>" target="_blank"><img src="<%=value.imgUrl%>"  width="230" height="230" alt="<%=value.name%>" /></a></div>
+             <div class="title"><a href="/product.jsp?id=<%=value.id%>"><%=value.name%></a></div>
+             <div class="title">250g</div>
+             <div class="disc">每天空运深圳  新鲜速冻</div>
+             <div class="price">现价：<%=value.memberPriceString%></div>
+         </li>
+         <%}%>
+         <%}else{%>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_2.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_3.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_4.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <li>
+           <div class="pic"><a href="#"><img src="../res/case/230x230_5.jpg" width="230" height="230" /></a></div>
+           <div class="title"><a href="#">白饺园家常猪肉三鲜水饺</a></div>
+           <div class="title">250g</div>
+           <div class="disc">每天空运深圳  新鲜速冻</div>
+           <div class="price">现价：<b>&yen;90.00</b></div>
+         </li>
+         <%}%>
+      </ul>
+   </div>
+</div>
+<!-- end 4f-->
+
+<%=#importUrl("/footer.html")%>
+
+</body>
+</html>

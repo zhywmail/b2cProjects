@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="utf-8"/>
+    <title>切换商家</title>
+
+    <meta name="description" content="saas 商家权益"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- basic styles -->
+    <link href="../../resources/bootstrap300/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="../../resources/bootstrap300/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="navbar navbar-default" id="navbar">
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="glyphicon glyphicon-cog"></i>
+                    商家域名
+                </small>
+            </a>
+        </div>
+
+    </div>
+    <!-- /.navbar-header -->
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            修改结果
+        </div>
+        <div class="panel-body">
+            {{=it.msg}}
+        </div>
+        <div class="panel-footer">
+            <a href="home.jsx?m={{=it.m}}">返回商家列表</a>&nbsp;&nbsp;
+            <a href="domains.jsx?m={{=it.m}}&merId={{=it.merId}}">返回修改页面</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

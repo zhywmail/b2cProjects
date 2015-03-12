@@ -1,0 +1,7 @@
+{
+    "libs_namespace": "BalanceAccount",
+    "libs": ["services/BalanceAccountService.jsx","services/BalanceAlgorithm.jsx"],
+    "obj_prefixes": ["CNUPay","Crbank","DiffHead3"],
+    "list_prefixes": ["DiffList30","DiffHead3"]
+
+}

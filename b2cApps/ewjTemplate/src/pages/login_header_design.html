@@ -1,0 +1,21 @@
+<%if(includeCommonCss){%>
+<link rel="stylesheet" type="text/css" href="../res/css/common.css" charset="utf-8"/>
+<%}%>
+<div class="header" id="Loginpage">
+    <div class="center">
+        <div class="headerBody mt8">
+            <%if(header && header.headerLogo && header.headerLogo.imgUrl){%>
+            <a class="headerLogo" href="<%=header.headerLogo.imgLinkTo%>" data-type="imgLink" imgSize="341X71" data-id="header:headerLogo" style="background-image: url(<%=header.headerLogo.imgUrl%>);"></a>
+            <%}else{%>
+            <a class="headerLogo" href="/" data-type="imgLink" imgSize="341X71" data-id="header:headerLogo"></a>
+            <%}%>
+
+            <div class="headerBiaoyu">
+                <div class="loginTopR mt30">
+                <%if(alreadyLogin){%><a href="/member/index.jsp" class="usn" rel="nofollow"><%=loggedUserName%></a><%}else{%>您好<%}%>，欢迎来到华润e万家！<%if(!alreadyLogin){%>请<a class="but" href="/login.html" rel="nofollow">登录</a><span>|</span><%}%><a href="/help.html">帮助中心</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,38 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script type="text/javascript" src="/resources/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+</script>
+<table class="table table-bordered table-over">
+
+    <thead>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th width="140px">商品编码</th>
+        <th width="140px">销售状态</th>
+        <th width="220px">更新时间</th>
+        <th width="140px">修改人</th>
+        <th width="160px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{~it.GoodsList:value:index}}
+    {{if(index%2){}}
+    <tr class="parent" bgcolor="#F9F9F9">
+        {{}else{}}
+    <tr class="parent">
+        {{}}}
+        <td>{{=value.id}}</td>
+        <td>{{=value.formatCreateTime}}</td>
+        <td>{{=value.title}}</td>
+        <td>{{=value.desc}}</td>
+        <td></td>
+    </tr>
+    {{~}}
+    </tbody>
+
+</table>
+<div class="pagination_params" totalPages="{{=it.pageParams.totalPages}}"
+     currentPage="{{=it.pageParams.currentPage}}" totalRecords="{{=it.pageParams.totalRecords}}"
+     displayNum="{{=it.pageParams.displayNum}}" pageLimit="{{=it.pageParams.pageLimit}}"
+     recordType="{{=it.pageParams.recordType}}">
+</div>

@@ -1,0 +1,7 @@
+{
+    "libs_namespace": "ShareOrder",
+    "libs": ["services/ShareOrderService.jsx","services/ShareOrderQuery.jsx"],
+    "obj_prefixes": ["ShareOrder"],
+    "list_prefixes": ["ShareOrder"]
+
+}

@@ -1,0 +1,86 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script type="text/javascript" src="/resources/jquery-1.7.2.min.js"></script>
+<table class="table table-bordered table-over" style="word-break:keep-all">
+    <thead>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th colspan="10" style="text-align: center">银联对账单总览</th>
+    </tr>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th>支付笔数</th>
+        <th>支付金额</th>
+        <th>手续费金额</th>
+        <th>退款笔数</th>
+        <th>退款金额</th>
+        <th>退款撤销笔数</th>
+        <th>退款撤销金额</th>
+        <th>结算金额</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{=it.head.PurCnt}}</td>
+        <td>{{=it.head.PurAmt}}</td>
+        <td>{{=it.head.FeeAmt}}</td>
+        <td>{{=it.head.RefCnt}}</td>
+        <td>{{=it.head.RefAmt}}</td>
+        <td>{{=it.head.RefCancelCnt}}</td>
+        <td>{{=it.head.RefCancelAmt}}</td>
+        <td>{{=it.head.LiqAmt}}</td>
+
+    </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-over" style="word-break:keep-all">
+    <thead>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th colspan="7" style="text-align: center;border-right-width: 3px">万家电商银联对账</th>
+        <th colspan="4" style="text-align: center">银联账单</th>
+        <th rowspan="2" style="text-align: center">差异</th>
+    </tr>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th width="120px">支付单号</th>
+        <th width="120px">订单单号</th>
+        <th width="160px">支付时间</th>
+        <th width="160px">支付方式</th>
+        <th width="220px">应收银联金额</th>
+        <th width="220px">应付银联手续费</th>
+        <th width="220px" style=";border-right-width: 3px">银联到账金额</th>
+        <th width="220px">支付单号</th>
+        <th width="220px">划账日期</th>
+        <th width="220px">应付万家</th>
+        <th width="220px">留存的手续费</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{~it.showList:value:index}}
+    {{if(value.isDiff!=0){}}
+        <tr class="parent" bgcolor="#FFE4E1">
+    {{}else{}}
+        {{if(index%2){}}
+            <tr class="parent" bgcolor="#F9F9F9">
+        {{}else{}}
+            <tr class="parent">
+        {{}}}
+    {{}}}
+        <td>{{=value.b2cOuterID}}</td>
+        <td>{{=value.b2cOrderIds}}</td>
+        <td>{{=value.b2cPaidTime}}</td>
+        <td>{{=value.b2cPayID}}</td>
+        <td>{{=value.b2cPaidMoneyAmount}}</td>
+        <td>{{=value.b2cPaidFee}}</td>
+        <td style=";border-right-width: 3px">{{=value.b2cAccountMoney}}</td>
+        <td>{{=value.bankOuterID}}</td>
+        <td>{{=value.bankPaidTime}}</td>
+        <td>{{=value.bankAccountMoney}}</td>
+        <td>{{=value.bankPaidFee}}</td>
+        <td>{{=(!value.isDiff?"无误":(value.isDiff==2?"商城无记录":(value.isDiff==3?"金额错误":"账单无记录")))}}</td>
+    </tr>
+    {{~}}
+    </tbody>
+
+</table>
+<div class="pagination_params" totalPages="{{=it.pageParams.totalPages}}"
+     currentPage="{{=it.pageParams.currentPage}}" totalRecords="{{=it.pageParams.totalRecords}}"
+     displayNum="{{=it.pageParams.displayNum}}" pageLimit="{{=it.pageParams.pageLimit}}"
+     recordType="{{=it.pageParams.recordType}}">
+</div>

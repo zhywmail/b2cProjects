@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>货到付款订单自动审核阀值</title>
+    <link href="/resources/bootstrap300/css/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script src="/resources/bootstrap300/js/bootstrap.min.js"></script>
+</head>
+<body style="margin-top:50px">
+<div class="container">
+    <form role="form" class="form-horizontal" method="post" action="SaveCondition.jsx">
+        <div class="panel panel-primary" style="margin:auto;width:95%">
+            <div class="panel-heading">
+                <h3 class="panel-title">货到付款订单自动审核阈值</h3>
+            </div>
+            <div class="panel-body">
+                <input type="hidden" name="action" value="add">
+
+                <div class="form-group">
+                    <label for="max_amount" class="col-sm-2 control-label">金额上限</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="max_amount" placeholder="阈值" name="max_amount" value="">
+                    </div>
+
+                    <label for="max_quantity" class="col-sm-2 control-label">数量上限</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="max_quantity" placeholder="阈值" name="max_quantity" value="">
+                    </div>
+
+                    <label for="min_orders" class="col-sm-2 control-label">最少完成订单数</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="min_orders" placeholder="阈值" name="min_orders" value="">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div style="clear: both;height:30px"></div>
+        <div >
+            <a class="btn btn-warning" style="margin-left:60px" href="ConditionList.jsx">返回列表</a>
+            <button type="submit" class="btn btn-primary" style="margin-left:30px">保存提交</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title><%if(config && config.title && config.title.value !=""){%><%=config.title.value%><%}else{%>帮助中心 - <%=webName%><%}%></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="<%if(config && config.description && config.description.value != ''){%><%=config.description.value%><%}else{%>帮助中心 - <%=webName%><%}%>"/>
+    <meta name="keywords" content="<%if(config && config.keywords && config.keywords.value != ''){%><%=config.keywords.value%><%}else{%>帮助中心 - <%=webName%><%}%>"/>
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta name="renderer" content="webkit"/>
+    <link rel="stylesheet" type="text/css" href="/resources/ewj/login/css/common.css" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="/resources/ewj/login/css/common_custom.css" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../res/css/help.css"/>
+    <style type="text/css">.crumb{margin-top: 36px;}</style>
+    <script src="/resources/jquery-1.10.2.min.js" type="text/javascript"></script>
+</head>
+<body>
+<%=#importUrl("/header.html")%>
+
+<!-- main -->
+<div class="center">
+    <!-- sidebar -->
+    <div class="sidebar float_l enableSelect">
+        <div class="crumb">
+            <a href="/">首页</a><%if(curColumn){%><span class="arrow"></span><a><%=curColumn.title%></a><%}%><%if(curArticle){%><span class="arrow"></span><a class="active"><%=curArticle.name||curArticle.title%></a><%}%>
+        </div>
+
+        <div class="sidebarMain">
+            <div class="sidebarMainHd" id="FaqHd">
+                <h2><a href="<%=requestURI%>">帮助中心</a></h2>
+            </div>
+            <div class="sidebarMainBd">
+                <%if(columnChildren){%>
+                <%for(var i=0;i< columnChildren.length;i++){%>
+                <%var column = columnChildren[i];%>
+                <h3><%=column.title%></h3>
+                <ul>
+                    <%var articles = infoSplitColumn[column.id];%>
+                    <%if(articles){%>
+                    <%for(var j=0,aLength=articles.length;j < aLength;j++){%>
+                    <%var article = articles[j]; %>
+                    <li class="<%=curArticle && curArticle.objId == article.objId ? 'active' : ''%>"><a href="<%=requestURI%>?id=<%=article.objId%>"><%=article.name||article.title%></a></li>
+                    <%}%>
+                    <%}%>
+
+                </ul>
+                <%}%>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar -->
+    <!-- main -->
+    <div class="main float_r">
+        <!-- panel -->
+        <div class="panel">
+            <div class="panelHd">
+                <h2 class="panelHdTitle"><%if(curArticle){%><%=curArticle.title%><%}%></h2>
+            </div>
+            <div class="panelBd">
+                <!-- article body -->
+                <div class="article">
+                    <div class="articleBd f14">
+                     <%if(curArticle){%><%=#curArticle.content%><%}%>
+                    </div>
+                </div>
+                <!-- end article body -->
+            </div>
+        </div>
+        <!-- end vipcard-->
+    </div>
+    <!--end main -->
+</div>
+<!-- end main -->
+<div class="clear"></div>
+
+<%=#importUrl("/footer.html")%>
+</body>
+</html>

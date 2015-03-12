@@ -1,0 +1,1322 @@
+body {
+    min-height: 1920px;
+    background-color: #ededed;
+}
+
+/*.badge_bao,*/
+/*.badge {*/
+    /*display: block;*/
+    /*width: 71px;*/
+    /*height: 71px;*/
+    /*background: url(../images/badge/bao.png) no-repeat;*/
+/*}*/
+
+/*.badge {*/
+    /*background-image: url(../images/badge/re.png)*/
+/*}*/
+
+/*.marker {*/
+    /*display: block;*/
+    /*width: 37px;*/
+    /*height: 44px;*/
+    /*line-height: 38px;*/
+    /*text-align: center;*/
+    /*color: #ededed;*/
+    /*font-size: 14px;*/
+    /*font-weight: bold;*/
+    /*background: url(../images/badge/new.png) no-repeat;*/
+/*}*/
+
+.border_b_ededed {
+    border-bottom: 1px solid #ededed;
+}
+
+/*��ҳ�����õ�Ƭ������ʼ*/
+.index_banner_group {
+    width: 100%;
+    height: 440px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.index_banner_group .banner_list {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.index_banner_group .banner_list > li {
+    width: 100%;
+    height: 440px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    text-align: center;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.index_banner_group .banner_list > li > a {
+    height: 100%;
+    width: 100%;
+    background: no-repeat center 0;
+    line-height: 415px;
+    display: inline-block;
+}
+
+.index_banner_group .banner_list > li.active {
+    display: block;
+    opacity: 1;
+}
+
+.index_banner_group .banner_nav {
+    position: absolute;
+    right: 50%;
+    bottom: 16px;
+    margin-right: -570px;
+    height: 10px;
+}
+
+.index_banner_group .banner_nav > li {
+    width: 8px;
+    height: 8px;
+    margin-left: 10px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    border: 2px solid #fff;
+    border-radius: 83px;
+    opacity: .57;
+    cursor: pointer;
+}
+
+.index_banner_group .banner_nav > li.active {
+    background: #e14041;
+    border-color: #e14041;
+    opacity: 1;
+}
+
+/*��ҳ�����õ�Ƭ��������*/
+
+.sideGoodCategories {
+    height: 440px;
+    border: 0;
+}
+
+.sideGoodCategories .sideGoodCategoriesBd {
+    height: 100%;
+    display: block !important;
+}
+
+.sideGoodCategories .sideGoodCategoriesHd {
+}
+
+.sideGoodCategories .sideGoodCategoriesMenu {
+    height: 100%;
+    display: block !important;
+}
+
+.sideGoodCategories .sideGoodCategoriesDetail{
+}
+
+.baner1,
+.baner2,
+.baner3,
+.baner4,
+.baner5,
+.baner6 {
+    width: 1190px;
+    float:left;
+    margin-top:25px;
+}
+
+.baner1 .left {
+    width:780px;
+    float:left;
+}
+.baner1 .left > .title,
+.baner1 .right > .title {
+    font-size:14px;
+    color:#666;
+    display:inline-block;
+    width:100%;
+}
+
+.baner1 .right > .title *{
+    vertical-align: middle;
+}
+.baner1 .left > .list > li > .mask {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border: 2px solid #f3484a;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transition: all 0.5s ease;
+}
+.baner1 .left > .list > li:hover > .mask {
+    opacity:1;
+    filter: alpha(opacity=100);
+}
+/*index_baner1_line*/
+.baner1 .left > .title > .t1,
+.baner1 .right > .title > .t1 {
+    font-size:24px;
+    font-weight:normal;
+    margin-right:15px;
+}
+.baner1 .left > .list {
+    width:100%;
+    float:left;
+    margin-top:15px;
+}
+.baner1 .left > .list > li {
+    width:250px;
+    height:350px;
+    float:left;
+    margin-right:10px;
+    position:relative;
+}
+
+.baner1 .left > .list > li:last-child {
+    margin-right: 0;
+}
+
+.baner1 .left > .list > li:hover {
+
+}
+.baner1 .left > .list > li .country {
+    position:absolute;
+    z-index:2;
+    left:20px;
+    top:20px;
+}
+.baner1 .left > .list > li .country > img {
+    float:left;
+    margin-right:20px;
+}
+.baner1 .left > .list > li .country .tip {
+    float:left;
+    font-size:12px;
+    color:#666;
+}
+.baner1 .left > .list > li .img_view {
+    position:relative;
+    width:250px;
+    height:230px;
+    line-height:230px;
+    float:left;
+    padding-bottom:6px;
+    background:url(../images/index_baner1_line.png) no-repeat 0 bottom #fff;
+    text-align:center;
+}
+.baner1 .left > .list > li .img_view > img {
+    vertical-align:middle;
+}
+.baner1 .left > .list > li .bottom {
+    background-color: #fff;
+    float: left;
+    height: 94px;
+    padding: 10px 20px;
+    width: 210px;
+    position:relative;
+}
+.baner1 .left > .list > li .bottom .name {
+    color: #333;
+    float: left;
+    font-size: 14px;
+    height: 32px;
+    line-height: 19px;
+    overflow: hidden;
+    width: 100%;
+
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url("ellipsis.xml#ellipsis");
+}
+.baner1 .left > .list > li .bottom .price {
+    float:left;
+}
+.baner1 .left > .list > li .bottom .stock {
+    float:left;
+    clear:both;
+    line-height: 18px;
+}
+.baner1 .left > .list > li .bottom .stock .title {
+    font-size:12px;
+    color:#666;
+    margin-right:5px;
+}
+.baner1 .left > .list > li .bottom .stock .line {
+    width:50px;
+    height:7px;
+    display:inline-block;
+    background-color:#d9d9d9;
+    border-radius:7px;
+    overflow:hidden;
+}
+.baner1 .left > .list > li .bottom .stock .line .now {
+    height:100%;
+    float:left;
+    background-color:#77b235;
+}
+.baner1 .left > .list > li .bottom .buy {
+    background-color:#e14041;
+    margin: 16px -3px 0 0;
+    height: 33px;
+    line-height:33px;
+    text-align:center;
+    color:#fff;
+    border-bottom:1px solid #a42f30;
+    font-size:18px;
+    float:right;
+    cursor:pointer;
+    transition:all 0.5s ease;
+    padding: 0 20px;
+}
+.baner1 .left > .list > li .bottom .buy:hover {
+    background-color:#fe7171;
+}
+
+.baner1 .right {
+    width: 410px;
+    float: right;
+}
+.baner1 .right > .title > .t1 {
+}
+.baner1 .right > .title > .over_time {
+    font-size:14px;
+    color:#666;
+    position: relative;
+    top: 2px;
+
+}
+.baner1 .right > .title .timerGroup * { color: #e14041; vertical-align: baseline;}
+.baner1 .right > .title > .over_time .clockIcon {
+    margin-right:5px;
+}
+.baner1 .right .cont {
+    width:100%;
+    margin-top:15px;
+    float:left;
+    position:relative;
+}
+.baner1 .right .cont .badge_bao {
+    display: none;
+    position:absolute;
+    top:20px;
+    right:20px;
+    z-index:2;
+}
+.baner1 .right .cont .img_view {
+    width:100%;
+    height:230px;
+    text-align:center;
+    overflow:hidden;
+    float:left;
+    background-color:#fff;
+}
+.baner1 .right .cont .img_view img {
+    width:100%;
+    height:100%;
+    vertical-align:middle;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+
+.baner1 .right .cont .img_view img:hover {
+}
+
+.baner1 .right .cont .bottom {
+    float:left;
+    width: 370px;
+    padding:15px 20px 0 20px;
+    font-size:14px;
+    height:105px;
+    background-color:#fff;
+}
+.baner1 .right .cont .bottom .name {
+    color:#333;
+    float:left;
+    width: 270px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url("ellipsis.xml#ellipsis");
+}
+.baner1 .right .cont .bottom .price {
+    float:left;
+}
+.baner1 .right .cont .bottom .quantity {
+    color:#666;
+    float:right;
+}
+.baner1 .right .cont .bottom .b_b {
+    width:100%;
+    float:left;
+    margin-top:16px;
+}
+.baner1 .right .cont .bottom .b_b .tg {
+    font-size:14px;
+    color:#666;
+}
+.baner1 .right .cont .bottom .b_b .tg .t1 {
+    display: inline-block;
+    font-size: 24px;
+    margin-left: -4px;
+}
+.baner1 .right .cont .bottom .b_b .tg .t1 strong {
+    font-size: 30px;
+    margin-left: -4px;
+}
+.baner1 .right .cont .bottom .b_b .scj {
+    font-size:12px;
+    color:#999;
+    display:block;
+    margin-top: 6px;
+}
+.baner1 .right .cont .bottom .b_b .buy {
+    line-height:33px;
+    color:#fff;
+    background-color:#e14041;
+    border-bottom:1px solid #a42f30;
+    font-size:18px;
+    font-weight:bold;
+    text-align:center;
+    float:right;
+    cursor:pointer;
+    transition:all 0.5s ease;
+    margin-top: 17px;
+    padding: 0 12px;
+}
+.baner1 .right .cont .bottom .b_b .buy:hover {
+    background-color:#fe7171;
+}
+.baner1 .right .cont .bottom .b_b .buy .people {
+    padding-left:15px;
+    margin-left:15px;
+    font-size:12px;
+    font-weight:200;
+    border-left:1px solid #fff;
+    line-height:25px;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.baner2 {
+    height:120px;
+    background-color:#fff;
+}
+.baner2 .title {
+    width:250px;
+    height:120px;
+    line-height:120px;
+    font-size:24px;
+    color:#f6f6f6;
+    font-weight:bold;
+    background-color:#f3484a;
+    text-align:center;
+    float:left;
+}
+.baner2 .title .ico {
+    font-size: 50px;
+    font-weight: 200;
+    margin-right: 15px;
+}
+.baner2 .ico_list {
+    float:left;
+    font-size:14px;
+    color:#333;
+    width:890px;
+}
+.baner2 .ico_list > li {
+    margin:22px 0 0 69px;
+    float:left;
+}
+.baner2 .ico_list > li:hover,
+.baner2 .ico_list > li:hover .ico {
+    color:#e14041;
+}
+.baner2 .ico_list > li .ico {
+    display: inline-block;
+    font-size: 21px;
+    margin-right: 10px;
+    text-align: center;
+    width: 35px;
+    color:#ccc;
+}
+
+.baner3 {
+    height:390px;
+}
+.baner3 > li {
+    width:590px;
+    height:390px;
+    overflow:hidden;
+    background-color:#FFF;
+}
+.baner3 > li > .left {
+    position:relative;
+    width:393px;
+    height:393px;
+    line-height:393px;
+    overflow:hidden;
+    float:left;
+    margin-left:-1px;
+    border-right:1px solid #ededed;
+}
+.baner3 > li > .left > .marker {
+}
+.baner3 > li > .left > img {
+    /*vertical-align:middle;*/
+    display: block;
+    width: 100%;
+    height: 393px;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+
+.baner3 > li > .left:hover > img {
+}
+.baner3 > li > .left > .pop {
+    line-height:20px;
+    bottom:-100%;
+    left:0;
+    width:100%;
+    height: 190px;
+    padding:15px 18px 0 18px;
+    background: url("../images/whiteOpacity90.png");
+    transition:all 0.4s ease-in-out;
+    opacity:0;
+    position: absolute;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.baner3 > li > .left:hover .pop{
+    transition:all 0.2s ease-out;
+    opacity:1;
+    bottom:0;
+}
+.baner3 > li > .left > .pop .name {
+    display:block;
+    width: 352px;
+    max-height: 40px;
+    color:#333;
+    font-size:14px;
+    overflow: hidden;
+}
+
+.baner3 > li > .left.hasBadge .pop .name {
+    width: 280px;
+}
+
+
+.baner3 > li > .left > .pop .price {
+    display:block;
+    margin:20px 0 15px 0;
+}
+.baner3 > li > .left > .pop .tip {
+    display:block;
+    padding:15px 0 0 0;
+    font-size:14px;
+    color:#999;
+    position:relative;
+    border-top:1px dashed #ddd;
+}
+.baner3 > li > .left > .pop .tip b {
+    display:block;
+}
+.baner3 > li > .left > .pop .tip .ico {
+    color: #d9d9d9;
+    font-size: 32px;
+    position: absolute;
+    right: 0;
+    top: 25px;
+}
+.baner3 > li > .right {
+    width:196px;
+    float:right;
+    overflow:hidden;
+}
+.baner3 > li > .right .tt1 {
+    height: 196px;
+    line-height: 196px;
+    position: relative;
+    border-bottom: 1px solid #ededed;
+
+}
+.baner3 > li > .right .tt1 > .i_view img {
+    /*max-width: 100%;
+    max-height: 100%;*/
+    width:100%;
+    vertical-align: middle;
+}
+.baner3 > li > .right .tt1 > .pop {
+    position:absolute;
+    width:157px;
+    padding:0 20px;
+    height:100%;
+    left:0;
+    top:-100%;
+    opacity:0;
+    transition:opacity 0.5s ease;
+    background: url("../images/whiteOpacity92.png");
+    display:none;
+}
+.baner3 > li > .right .tt1 > .pop1 {
+    top: 0;
+}
+.baner3 > li > .right .tt1 > .pop2 {
+    top: 0;
+}
+.baner3 > li > .right .tt1:hover {
+    z-index:2;
+}
+.baner3 > li > .right .tt1:hover > .pop {
+    display:block;
+    opacity:1;
+}
+.baner3 > li > .right .tt1 > .pop .name {
+    line-height:20px;
+    display:inline-block;
+    vertical-align:middle;
+    font-size:14px;
+    color:#000;
+    cursor:pointer;
+}
+.baner3 > li > .right .tt1 > .pop .price {
+    line-height:20px;
+    display:block;
+    margin-top:10px;
+}
+.baner4 {
+}
+.baner4 > .list {
+    width:1210px;
+    float:left;
+}
+.baner4 > .list > li,
+.baner5 > .right > .bgll {
+    width: 290px;
+    float: left;
+    margin-right: 10px;
+    background-color: #fff;
+    position: relative;
+}
+.baner4 > .list > li {
+    height:411px;
+}
+.baner4 > .list > li > .mask,
+.baner5 > .right > .bgll > .mask {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border: 2px solid #f3484a;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transition: all 0.5s ease;
+    
+}
+.baner4 > .list > li:hover > .mask,
+.baner5 > .right > .bgll:hover > .mask {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.baner4 > .list > li > .img_view {
+    width:100%;
+    height:282px;
+    line-height:282px;
+    text-align:center;
+    overflow:hidden;
+    float:left;
+    border-bottom:1px solid #ededed;
+    position:relative;
+}
+.baner4 > .list > li > .img_view img {
+    /*vertical-align:middle;*/
+    width:100%;
+}
+.baner4 > .list > li > .bottom {
+    float: left;
+    padding: 15px 20px;
+    width: 246px;
+    position:relative;
+}
+.baner4 > .list > li > .bottom .name,
+.baner4 > .list > li > .bottom .present {
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+    font-weight:normal;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url("ellipsis.xml#ellipsis");
+}
+.baner4 > .list > li > .bottom .present {
+    color: #999;
+    margin-top:5px;
+}
+.baner4 > .list > li > .bottom .price {
+    display:block;
+    margin-top:10px;
+}
+.baner5 {
+}
+.baner5 > .left {
+    width:250px;
+    height:830px;
+    float:left;
+    position: relative;
+    background-color:#fff;
+}
+.baner5 > .left > .title {
+    background-color:#e14041;
+    height:120px;
+    line-height:120px;
+    font-size:24px;
+    font-weight:bold;
+    color:#fff;
+    text-align:center;
+    width:100%;
+}
+.baner5 > .left > .title > .ico {
+    margin-right:15px;
+    font-size:36px;
+}
+.baner5 > .left > .list {
+    text-align:center;
+    padding:20px 0 26px 0;
+    margin:0 18px 0 18px;
+}
+.baner5 > .left > .list > a {
+    color: #333;
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    margin-top: 14px;
+    text-align: left;
+}
+.baner5 > .left > .list > a > .ico {
+    color: #ccc;
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 32px;
+    margin-right: 15px;
+    text-align: center;
+    width: 50px;
+}
+.baner5 > .left > .list > a:hover,
+.baner5 > .left > .list > a:hover .ico {
+    color:#e14041;
+}
+.baner5 > .left > .tip {
+    width:210px;
+    margin:0 20px;
+    float:left;
+    font-size:12px;
+    color:#333;
+    padding:10px 0 20px;
+}
+.baner5 > .left > .tip > .tt {
+    font-size: 14px;
+    display: block;
+    padding: 10px 0;
+}
+
+.baner5 .right {
+    float: right;
+    width: 940px;
+    height:855px;
+    margin: 0 -10px -25px 0;
+}
+
+.baner5 .right > .bgtt {
+    background-color: #fff;
+    height: 410px;
+    overflow: hidden;
+    width: 617px;
+    float:left;
+    margin:0 10px 10px 0;
+}
+
+.baner5 .right > .bgtt > .left {
+    border-right: 1px solid #ededed;
+    float: left;
+    height: 100%;
+    line-height: 410px;
+    margin-left: -1px;
+    overflow: hidden;
+    position: relative;
+    width: 410px;
+}
+
+.baner5 .right > .bgtt > .left img {
+    display: block;
+    width: 410px;
+    height: 410px;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+
+.baner5 .right > .bgtt > .left:hover img{
+}
+
+.baner5 .right > .bgtt > .left > .marker {
+    left: 30px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.baner5 .right > .bgtt > .left > img {
+    /*vertical-align: middle;*/
+}
+
+.baner5 .right > .bgtt > .left > .pop {
+    background: url("../images/whiteOpacity90.png");
+    bottom: -100%;
+    left: 0;
+    line-height: 20px;
+    opacity: 0;
+    padding: 15px 20px 0 20px;
+    position: absolute;
+    transition: all 0.4s ease-in-out 0s;
+    width: 100%;
+    height: 190px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.baner5 .right > .bgtt > .left:hover .pop {
+    bottom: 0;
+    opacity: 1;
+    transition: all 0.2s ease-out 0s;
+}
+
+.baner5 .right > .bgtt > .left > .pop .badge {
+    display: block;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    z-index: 2;
+}
+
+.baner5 .right > .bgtt > .left > .pop .name {
+    color: #333;
+    display: block;
+    width: 280px;
+    max-height: 40px;
+    font-size: 14px;
+    overflow: hidden;
+    font-weight:normal;
+}
+
+.baner5 .right > .bgtt > .left > .pop .price {
+    display: block;
+    margin: 20px 0 15px -4px;
+}
+
+.baner5 .right > .bgtt > .left > .pop .tip {
+    border-top: 1px dashed #ddd;
+    color: #666;
+    display: block;
+    width: 335px;
+    font-size: 14px;
+    padding: 15px 0;
+    position: relative;
+
+    overflow: hidden;
+    font-weight:normal;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url("ellipsis.xml#ellipsis");
+}
+
+.baner5 .right > .bgtt > .left > .pop .tip b {
+    display: block;
+}
+
+.baner5 .right > .bgtt > .left > .pop .tip .ico {
+    color: #d9d9d9;
+    font-size: 32px;
+    position: absolute;
+    right: 0;
+    top: 25px;
+}
+
+.baner5 .right > .bgtt > .right {
+    float: right;
+    overflow: hidden;
+    width: 205px;
+    margin-right:0;
+}
+
+.baner5 .right > .bgtt > .right .tt1 {
+    border-bottom: 1px solid #ededed;
+    height: 205px;
+    line-height: 210px;
+    position: relative;
+}
+
+.baner5 .right > .bgtt > .right .tt1 > .i_view img {
+    /*max-height: 100%;
+    max-width: 100%;
+    vertical-align: middle;*/
+    width:100%;
+    height:100%;
+}
+
+.baner5 .right > .bgtt > .right .tt1 > .pop {
+    position: absolute;
+    width: 169px;
+    height: 211px;
+    padding: 0 20px;
+    left: 0;
+    top: -100%;
+    opacity: 0;
+    
+    transition: opacity 0.5s ease;
+    background: url("../images/whiteOpacity92.png");
+    display: none;
+}
+.baner5 .right > .bgtt > .right .tt1 > .pop1 {
+    top: 0;
+}
+.baner5 .right > .bgtt > .right .tt1 > .pop2 {
+    top: 0;
+}
+.baner5 .right > .bgtt > .right .tt1:hover {
+    z-index: 2;
+}
+.baner5 .right > .bgtt > .right .tt1:hover .pop {
+    display: block;
+    
+    opacity: 1;
+}
+
+.baner5 .right > .bgtt > .right .tt1 > .pop .name {
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+.baner5 .right > .bgtt > .right .tt1 > .pop .price {
+    display: block;
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+.baner5 > .right > .bgll {
+    background-color: #fff;
+    float: left;
+    margin:0 10px 10px 0;
+    width: 303px;
+    height:410px;
+}
+
+.baner5 > .right > .bgll > .img_view {
+    border-bottom: 1px solid #ededed;
+    float: left;
+    height: 300px;
+    line-height: 300px;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    position:relative;
+}
+
+.baner5 > .right > .bgll > .img_view img {
+    vertical-align: middle;
+}
+
+.baner5 > .right > .bgll > .bottom {
+    float: left;
+    padding: 0 20px 15px 20px;
+    width: 260px;
+    position:relative;
+}
+
+.baner5 > .right > .bgll > .bottom .name,
+.baner5 > .right > .bgll > .bottom .present {
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+    font-weight:normal;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-binding: url("ellipsis.xml#ellipsis");
+}
+.baner5 > .right > .bgll > .bottom .present {
+    color: #999;
+    margin-top: 0;
+}
+.baner5 > .right > .bgll > .bottom .price {
+    display: block;
+    margin-top: 10px;
+}
+
+.baner6 .left {
+    float: left;
+    width: 876px;
+}
+
+.baner6 .left > .title, .baner6 .right > .title {
+    color: #555;
+    display: inline-block;
+    width: 100%;
+    font-size: 24px;
+    font-weight:normal;
+    height:30px;
+}
+.baner6 .left > .title .more {
+    float:right;
+    font-size:14px;
+    color:#666;
+    margin-top:11px;
+    font-weight:200;
+}
+.baner6 .left > .list {
+    display: inline-block;
+    margin-top: 13px;
+    width: 100%;
+}
+
+.baner6 .left > .list > li {
+    float: left;
+    height: 360px;
+    margin:0 1px 0 0;
+    position: relative;
+    width: 291px;
+    background-color: #fff;
+}
+
+.baner6 .left > .list > li:last-child{
+    margin-right: 0;
+}
+
+.baner6 .left > .list > li:hover .img_view img{
+    opacity: .80;
+}
+.baner6 .left > .list > li .img_view {
+    float: left;
+    height: 217px;
+    line-height: 217px;
+    padding: 16px 0 22px 0;
+    text-align: center;
+    width: 100%;
+    background: url("../images/baner6BG1.jpg") repeat-x 0 bottom;
+}
+
+.baner6 .left > .list > li .img_view > img {
+    width: 217px;
+    height: 217px;
+    vertical-align: middle;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+
+.baner6 .left > .list > li .bottom {
+    float: left;
+    padding: 10px 20px;
+    width: 239px;
+}
+
+.baner6 .left > .list > li .bottom .name {
+    color: #666;
+    float: left;
+    font-size: 14px;
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.baner6 .left > .list > li .bottom .price {
+    float: left;
+    margin-top: 10px;
+}
+.baner6 .right {
+    float: right;
+    width: 304px;
+}
+
+.baner6 .right > .title {
+    color: #666;
+    font-size: 24px;
+    font-weight:normal;
+    margin-bottom: 13px;
+}
+.baner6 .right .cont {
+    float: left;
+    height: 360px;
+    padding: 0 20px;
+    position: relative;
+    background-color:#fff;
+}
+
+.baner6 .right .cont .title {
+    float:left;
+    font-size:18px;
+    color:#666;
+    margin:18px 0 6px 0;
+}
+.baner6 .right .cont .img_view {
+    clear:both;
+    background-color: #fff;
+    float: left;
+    width: 263px;
+    height: 200px;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+.baner6 .right .cont .img_view img {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    -ms-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+
+.baner6 .right .cont:hover .img_view img {
+    opacity: .8;
+}
+
+.baner6 .right .cont .name {
+    margin-top: 7px;
+    line-height: 20px;
+}
+.baner6 .right .cont .name,
+.baner6 .right .cont .more {
+    font-size:14px;
+    color:#666;
+    float:left;
+    width:100%;
+
+}
+.baner6 .right .cont .more {
+    width:auto;
+    float:right;
+    margin-top:24px;
+    color: #bbb;
+}
+
+.baner6 .right .cont .more {
+    color: #bbb;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+
+.baner6 .right .cont .more:hover {
+    color: #e14041;
+}
+
+.baner6 {
+    margin-top: 35px;
+}
+
+.baner6 .textPrimary.price {
+    font-size: 18px;
+}
+
+.baner6 .textPrimary.price strong {
+    font-size: 24px;
+}
+
+.i_view {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.i_view img {
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+
+/* brand slide */
+.brandSlide {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    padding: 15px 15px 20px 15px;
+    margin: 0 20px;
+    text-align: center;
+    border-top: 1px dashed #cecece;
+}
+
+.brandSlideHd .prev{
+    position: absolute;
+    top: 100px;
+    left: -8px;
+    width: 25px;
+    height: 40px;
+    background: url("../images/indexSidePrevBtn.png") no-repeat;
+}
+
+.brandSlideHd .next{
+    position: absolute;
+    top: 100px;
+    right: -8px;
+    width: 25px;
+    height: 40px;
+    background: url("../images/indexSideNextBtn.png") no-repeat;
+}
+
+.brandSlideHd i {
+    -webkit-transition: all .45s;
+    -moz-transition: all .45s;
+    -ms-transition: all .45s;
+    -o-transition: all .45s;
+    transition: all .45s;
+    cursor: pointer;
+}
+
+.brandSlideHd i:hover {
+    box-shadow: 0 0 2px #999;
+}
+
+.brandSlideBd {
+    overflow: hidden;
+    zoom:1;
+}
+
+.brandSlideBd ul {
+    width: 1000%;
+}
+
+.brandSlideBd li {
+    float: left;
+    width: 180px;
+    height: 246px;
+}
+
+.brandSlideBd li img {
+    vertical-align: top;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+
+.brandSlideBd li img:hover {
+    margin-left: -5px;
+}
+
+/* side recommend */
+.sideRecommend {
+    margin-left: 15px;
+}
+
+.sideRecommend li{
+    overflow: hidden;
+    width: 214px;
+    height: 100px;
+    padding: 20px 0;
+    border-bottom: 1px dashed #c9c9c9;
+    zoom: 1;
+}
+
+.sideRecommend li:last-child {
+    border-bottom: none;
+}
+
+
+.sideRecommend a img {
+    display: block;
+    width: 214px;
+    height: 100px;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+
+.sideRecommend a img:hover {
+    opacity: .8;
+}
+
+
+/* 品质生活 */
+.pingzhiRow {
+    margin-top: 10px !important;
+}
+
+/* 一日三餐 */
+.yirisancanRow {
+    margin-top: 10px !important;
+}
+
+/* index global price */
+.textPrimary.price {
+    font-size: 22px;
+    margin-left: -4px;
+}
+
+.textPrimary.price strong{
+    font-size: 30px;
+    margin-left: -4px;
+}
+
+

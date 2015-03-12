@@ -1,0 +1,6 @@
+{
+    "libs_namespace": "GoodsPriceInquery",
+    "libs": ["services/GoodsPriceService.jsx"],
+    "obj_prefixes": ["GPid"],
+    "list_prefixes": ["GPIList"]
+}

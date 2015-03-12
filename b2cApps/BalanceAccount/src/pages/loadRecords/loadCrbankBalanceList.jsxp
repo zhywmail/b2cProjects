@@ -1,0 +1,80 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script type="text/javascript" src="/resources/jquery-1.7.2.min.js"></script>
+<table class="table table-bordered table-over" style="word-break:keep-all">
+    <thead>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th colspan="10" style="text-align: center">华润e付对账单总览</th>
+    </tr>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th>成功总金额</th>
+        <th>成功总笔数</th>
+        <th>失败总笔数</th>
+        <th>处理中总笔数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+        <td>{{=it.head.totalMoney}}</td>
+        <td>{{=it.head.successAccount}}</td>
+        <td>{{=it.head.failAccount}}</td>
+        <td>{{=it.head.processAccount}}</td>
+
+    </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-over" style="word-break:keep-all">
+
+    <thead>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th colspan="7" style="text-align: center">万家电商华润e付对账</th>
+        <th colspan="4" style="text-align: center">华润e付账单</th>
+        <th rowspan="2">差异</th>
+    </tr>
+    <tr class="active" bgcolor="#F6F6F6">
+        <th width="120px">支付单号</th>
+        <th width="120px">订单单号</th>
+        <th width="160px">支付时间</th>
+        <th width="160px">支付方式</th>
+        <th width="220px">应收华润e付金额</th>
+        <th width="220px">应付华润e付手续费</th>
+        <th width="220px">华润e付到账金额</th>
+        <th width="220px">支付单号</th>
+        <th width="220px">划账日期</th>
+        <th width="220px">应付万家</th>
+        <th width="220px">留存的手续费</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{~it.showList:value:index}}
+    {{if(value.isDiff!=0){}}
+        <tr class="parent" bgcolor="#FFE4E1">
+    {{}else{}}
+        {{if(index%2){}}
+            <tr class="parent" bgcolor="#F9F9F9">
+        {{}else{}}
+            <tr class="parent">
+        {{}}}
+    {{}}}
+        <td>{{=value.b2cOuterID}}</td>
+        <td>{{=value.b2cOrderIds}}</td>
+        <td>{{=value.b2cPaidTime}}</td>
+        <td>{{=value.b2cPayID}}</td>
+        <td>{{=value.b2cPaidMoneyAmount}}</td>
+        <td>{{=value.b2cPaidFee}}</td>
+        <td>{{=value.b2cAccountMoney}}</td>
+        <td>{{=value.bankOuterID}}</td>
+        <td>{{=value.bankPaidTime}}</td>
+        <td>{{=value.bankAccountMoney}}</td>
+        <td>{{=value.bankPaidFee}}</td>
+        <td>{{=(!value.isDiff?"无误":(value.isDiff==2?"商城无记录":(value.isDiff==3?"金额错误":"账单无记录")))}}</td>
+    </tr>
+    {{~}}
+    </tbody>
+
+</table>
+<div class="pagination_params" totalPages="{{=it.pageParams.totalPages}}"
+     currentPage="{{=it.pageParams.currentPage}}" totalRecords="{{=it.pageParams.totalRecords}}"
+     displayNum="{{=it.pageParams.displayNum}}" pageLimit="{{=it.pageParams.pageLimit}}"
+     recordType="{{=it.pageParams.recordType}}">
+</div>
